@@ -8,18 +8,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitlePage extends World
 {
-
-    /**
-     * Constructor for objects of class TitlePage.
-     * 
-     */
+    private HowToPlay howToPlay;
+    
     public TitlePage()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        
         prepare();
+
     }
+    
+    public void act()
+    {
+        if (Greenfoot.mouseMoved(howToPlay))
+        {
+            howToPlay.setWhiteBackground();
+        }
+        else
+        {
+            howToPlay.setClearBackground();
+        }        
+    }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -27,12 +37,14 @@ public class TitlePage extends World
     private void prepare()
     {
         Label label = new Label("Snake", 70);
-        addObject(label,548,222);
-        label.setLocation(292,150);
-        label.setLocation(304,152);
-        label.setLocation(297,148);
+        addObject(label,300,150);
         
-        HowToPlay howToPlay = new HowToPlay();
+        howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 300);
+        howToPlay.setLocation(294,311);
+        howToPlay.setLocation(306,314);
+        howToPlay.setLocation(298,314);
+        howToPlay.setLocation(298,314);
+        howToPlay.setLocation(293,314);
     }
 }
