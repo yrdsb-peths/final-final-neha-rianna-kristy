@@ -20,7 +20,8 @@ public class TitlePage extends World
     
     public void act()
     {
-        if (Greenfoot.mouseMoved(howToPlay))
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null && mouse.getActor() == howToPlay)
         {
             howToPlay.setWhiteBackground();
         }
