@@ -9,10 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Start extends Button
 {
     public Start()
-    {
-        GreenfootImage img = new GreenfootImage(" Start ", 30, Color.WHITE, new Color(0, 0, 0, 0), Color.BLACK);
-        img.setFont(new Font("Arial", true, false, 30));
-        setImage(img);
+    {   
+        setText(" Click to Start ");
     }
     public void act()
     {
