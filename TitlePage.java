@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitlePage extends World
 {
     private HowToPlay howToPlay;
+    private Start start; 
     
     public TitlePage()
     {    
@@ -20,15 +21,31 @@ public class TitlePage extends World
     
     public void act()
     {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        if (mouse != null && mouse.getActor() == howToPlay)
+        if (Greenfoot.mouseMoved(howToPlay))
         {
             howToPlay.setWhiteBackground();
         }
-        else
+        if (Greenfoot.mouseMoved(null))
         {
-            howToPlay.setClearBackground();
-        }        
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            if (mouse == null || mouse.getActor() != howToPlay)
+            {
+                howToPlay.setClearBackground();
+            }
+        }     
+        
+        if (Greenfoot.mouseMoved(start))
+        {
+            start.setWhiteBackground();
+        }
+        if (Greenfoot.mouseMoved(null))
+        {
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            if (mouse == null || mouse.getActor() != start)
+            {
+                start.setClearBackground();
+            }
+        }  
     }
     
     /**
@@ -39,6 +56,9 @@ public class TitlePage extends World
     {
         Label label = new Label("Snake", 70);
         addObject(label,300,150);
+        
+        start = new Start();
+        addObject(start, 300, 240);
         
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 300);
