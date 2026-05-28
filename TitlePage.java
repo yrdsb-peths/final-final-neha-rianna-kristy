@@ -12,8 +12,10 @@ public class TitlePage extends World
     
     public TitlePage()
     {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
+        // Set your custom background image
         setBackground(new GreenfootImage("backgroundSnake.png"));
         
         prepare();
@@ -37,11 +39,9 @@ public class TitlePage extends World
             {
                 Actor hoveredActor = mouse.getActor();
                 
-                // Clear highlights by default
                 easyBtn.setClearBackground();
                 howToPlay.setClearBackground();
                 
-                // Highlight the specific item being hovered over
                 if (hoveredActor == easyBtn) 
                 {
                     easyBtn.setWhiteBackground();
@@ -72,30 +72,25 @@ public class TitlePage extends World
      */
     private void prepare()
     {
-        // 1. Game Title
+        // Game Title
         Label titleLabel = new Label("Snake apple", 60);
         addObject(titleLabel, 300, 60);
 
-        // 2. How To Play Headers & Instructions
+        // How To Play Headers & Instructions
         Label howToPlayHeader = new Label("How to Play:", 24);
         addObject(howToPlayHeader, 300, 130);
         
-        // Using your exact string layout and unicode arrow symbols
         Label instructions1 = new Label("Use Up, Down, Left, and Right keys", 20);
         Label instructions2 = new Label("Use \u2190 \u2191 \u2193 \u2192 to Move", 20);
         addObject(instructions1, 300, 170);
         addObject(instructions2, 300, 200);
 
-        // 3. World Level Selection Button
         easyBtn = new EasyButton(); 
         addObject(easyBtn, 300, 280);
 
-        // 4. Extra Link / Info Button
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 340);
         
-        // 5. Decorative Snake Picture (placed on the left side)
-        SnakeDecoration snakePic = new SnakeDecoration();
-        addObject(snakePic, 100, 230); 
+ 
     }
 }

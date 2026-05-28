@@ -1,16 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class HowToPlay extends Button
+public class HowToPlay extends Actor
 {
-    public HowToPlay()
+    public void act() 
     {
-        setText(" How to Play " );
-    }
     
-    public void act()
-    {
-        // Add your action code here.
     }
-    
 
+
+    public void setWhiteBackground()
+    {
+        setImage(new GreenfootImage("how_to_play_white.png")); 
+    }
+
+    public void setClearBackground()
+    {
+        setImage(new GreenfootImage("how_to_play_clear.png"));
+    }
 }
