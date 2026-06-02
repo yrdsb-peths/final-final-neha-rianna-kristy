@@ -12,7 +12,6 @@ public class TitlePage extends World
     
     public TitlePage()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 300, 1);
         
         // Set your custom background image
@@ -84,7 +83,7 @@ public class TitlePage extends World
         addObject(instructions2, 300, 200);
 
         easyBtn = new EasyButton(); 
-        addObject(easyBtn, 300, 280);
+        addObject(easyBtn, 50, 50);
 
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 340);
