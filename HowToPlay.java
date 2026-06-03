@@ -9,16 +9,7 @@ public class HowToPlay extends Button
     
     public HowToPlay()
     {
+        setText("How to Play");
         setClearBackground();
-    }
-
-    public void setWhiteBackground()
-    {
-        setImage(new GreenfootImage("how_to_play_white.png")); 
-    }
-
-    public void setClearBackground()
-    {
-        setImage(new GreenfootImage("how_to_play_clear.png"));
     }
 }

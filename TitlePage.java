@@ -11,10 +11,7 @@ public class TitlePage extends World
     private EasyButton easyBtn; 
     
     public TitlePage()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 300, 1);
-        
+    {            
         super(600, 400, 1);
         setBackground(new GreenfootImage("backgroundSnake.png"));
         
@@ -32,17 +29,22 @@ public class TitlePage extends World
      */
     private void handleHoverEffects()
     {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
         easyBtn.setClearBackground();
         howToPlay.setClearBackground();
-        if (Greenfoot.mouseMoved(easyBtn))
+        if (mouse == null)
         {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (Greenfoot.mouseMoved(easyBtn))
+            return;
+        }
+        if (mouse != null)
+        {
+            Actor actor = mouse.getActor();
+            
+            if (actor == easyBtn)
             {
                 easyBtn.setWhiteBackground();
-                
             }
-            else if (Greenfoot.mouseMoved(howToPlay))
+            else if (actor == howToPlay)
             {
                 howToPlay.setWhiteBackground();
             }
