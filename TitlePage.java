@@ -12,6 +12,8 @@ public class TitlePage extends World
     
     public TitlePage()
     {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 300, 1);
         
         super(600, 400, 1);
         setBackground(new GreenfootImage("backgroundSnake.png"));
@@ -66,16 +68,14 @@ public class TitlePage extends World
     private void prepare()
     {
         // Game Title
-        Label titleLabel = new Label("Snake apple", 60);
+        Label titleLabel = new Label("Sssnack Attack", 60);
         addObject(titleLabel, 300, 60);
 
         // How To Play Headers & Instructions
         Label howToPlayHeader = new Label("How to Play:", 24);
         addObject(howToPlayHeader, 300, 130);
         
-        Label instructions1 = new Label("Use Up, Down, Left, and Right keys", 20);
         Label instructions2 = new Label("Use \u2190 \u2191 \u2193 \u2192 to Move", 20);
-        addObject(instructions1, 300, 170);
         addObject(instructions2, 300, 200);
 
         easyBtn = new EasyButton(); 
