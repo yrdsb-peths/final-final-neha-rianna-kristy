@@ -12,10 +12,8 @@ public class TitlePage extends World
     
     public TitlePage()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
         
-        // Set your custom background image
+        super(600, 400, 1);
         setBackground(new GreenfootImage("backgroundSnake.png"));
         
         prepare();
@@ -32,24 +30,19 @@ public class TitlePage extends World
      */
     private void handleHoverEffects()
     {
-        if (Greenfoot.mouseMoved(null))
+        easyBtn.setClearBackground();
+        howToPlay.setClearBackground();
+        if (Greenfoot.mouseMoved(easyBtn))
         {
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse != null)
+            if (Greenfoot.mouseMoved(easyBtn))
             {
-                Actor hoveredActor = mouse.getActor();
+                easyBtn.setWhiteBackground();
                 
-                easyBtn.setClearBackground();
-                howToPlay.setClearBackground();
-                
-                if (hoveredActor == easyBtn) 
-                {
-                    easyBtn.setWhiteBackground();
-                }
-                else if (hoveredActor == howToPlay) 
-                {
-                    howToPlay.setWhiteBackground();
-                }
+            }
+            else if (Greenfoot.mouseMoved(howToPlay))
+            {
+                howToPlay.setWhiteBackground();
             }
         }
     }
@@ -61,15 +54,15 @@ public class TitlePage extends World
     {
         if (Greenfoot.mouseClicked(easyBtn)) 
         {
-            // Changes the screen to your easy grid world layout
             Greenfoot.setWorld(new EasyGrid()); 
+        }
+        
+        if(Greenfoot.mouseClicked(howToPlay))
+        {
+            
         }
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
     private void prepare()
     {
         // Game Title

@@ -11,7 +11,7 @@ public class EasyButton extends Actor
         // "easy_button_clear.png" and "easy_button_white.png" are placeholders!
         // Replace them with your actual button image filenames if you have them.
         clearImg = new GreenfootImage("easy_button_clear.png");
-        whiteImg = new GreenfootImage("easy_button_white.png");
+        //whiteImg = new GreenfootImage("easy_button_white.png");
         
         // Set the starting image
         setImage(clearImg);

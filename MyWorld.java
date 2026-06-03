@@ -9,7 +9,7 @@ public class MyWorld extends World
     {
         super(600, 400, 1);
         
-        setBackground("background_game.png");
+        //setBackground("background_game.png");
 
     } 
     
