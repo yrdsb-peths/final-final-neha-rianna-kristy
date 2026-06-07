@@ -11,8 +11,15 @@ public class TitlePage extends World
     private EasyButton easyBtn; 
     
     public TitlePage()
+<<<<<<< HEAD
+    {    
+        super(600, 300, 1);
+        
+        // Set your custom background image
+=======
     {            
         super(600, 400, 1);
+>>>>>>> 2a1ade1e1c1c9648a5eb3dc64bdcfb7f3ae51d8e
         setBackground(new GreenfootImage("backgroundSnake.png"));
         
         prepare();
@@ -81,7 +88,7 @@ public class TitlePage extends World
         addObject(instructions2, 300, 200);
 
         easyBtn = new EasyButton(); 
-        addObject(easyBtn, 300, 280);
+        addObject(easyBtn, 50, 50);
 
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 340);
