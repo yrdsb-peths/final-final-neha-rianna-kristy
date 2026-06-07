@@ -15,7 +15,8 @@ public class EasyGrid extends World
      */
     public EasyGrid()
     {    
-        super(600, 400, 1); 
-        addObject(new Snake(), 300, 300);
+        super(250, 250, 1); 
+        setBackground("easy_grid.png");
+        addObject(new Snake(), 125, 125);
     }
 }
