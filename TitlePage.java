@@ -11,10 +11,15 @@ public class TitlePage extends World
     private EasyButton easyBtn; 
     
     public TitlePage()
+<<<<<<< HEAD
     {    
         super(600, 300, 1);
         
         // Set your custom background image
+=======
+    {            
+        super(600, 400, 1);
+>>>>>>> 2a1ade1e1c1c9648a5eb3dc64bdcfb7f3ae51d8e
         setBackground(new GreenfootImage("backgroundSnake.png"));
         
         prepare();
@@ -31,24 +36,24 @@ public class TitlePage extends World
      */
     private void handleHoverEffects()
     {
-        if (Greenfoot.mouseMoved(null))
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        easyBtn.setClearBackground();
+        howToPlay.setClearBackground();
+        if (mouse == null)
         {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse != null)
+            return;
+        }
+        if (mouse != null)
+        {
+            Actor actor = mouse.getActor();
+            
+            if (actor == easyBtn)
             {
-                Actor hoveredActor = mouse.getActor();
-                
-                easyBtn.setClearBackground();
-                howToPlay.setClearBackground();
-                
-                if (hoveredActor == easyBtn) 
-                {
-                    easyBtn.setWhiteBackground();
-                }
-                else if (hoveredActor == howToPlay) 
-                {
-                    howToPlay.setWhiteBackground();
-                }
+                easyBtn.setWhiteBackground();
+            }
+            else if (actor == howToPlay)
+            {
+                howToPlay.setWhiteBackground();
             }
         }
     }
@@ -60,15 +65,15 @@ public class TitlePage extends World
     {
         if (Greenfoot.mouseClicked(easyBtn)) 
         {
-            // Changes the screen to your easy grid world layout
             Greenfoot.setWorld(new EasyGrid()); 
+        }
+        
+        if(Greenfoot.mouseClicked(howToPlay))
+        {
+            
         }
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
     private void prepare()
     {
         // Game Title
