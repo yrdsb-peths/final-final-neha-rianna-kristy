@@ -9,13 +9,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EasyGrid extends World
 {
 
-    /**
-     * Constructor for objects of class EasyGrid.
-     * 
-     */
+    public static final int GRID_SIZE = 20;
     public EasyGrid()
     {    
-        super(600, 400, 1); 
-        addObject(new Snake(), 300, 300);
+        super(218, 218, 1); 
+        setBackground("easy_grid.png");
+        addObject(new SnakeParts("tail.png"), 130, 110);
+        addObject(new SnakeParts("middle.png"), 110, 110);
+        addObject(new SnakeParts("head0.png"), 90, 110);
+        prepare();
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
     }
 }
