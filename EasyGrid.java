@@ -12,11 +12,9 @@ public class EasyGrid extends World
     public static final int GRID_SIZE = 20;
     public EasyGrid()
     {    
-        super(218, 218, 1); 
+        super(218, 218, 1);
         setBackground("easy_grid.png");
-        addObject(new SnakeParts("tail.png"), 130, 110);
-        addObject(new SnakeParts("middle.png"), 110, 110);
-        addObject(new SnakeParts("head0.png"), 90, 110);
+        addObject(new Snake(), 90, 110);
         prepare();
     }
     /**

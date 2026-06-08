@@ -20,4 +20,9 @@ public class SnakeParts extends Actor
     {
         // Add your action code here.
     }
+
+    public Actor getTouchingApple()
+    {
+        return getOneObjectAtOffset(0, 0, Apple.class);
+    }
 }

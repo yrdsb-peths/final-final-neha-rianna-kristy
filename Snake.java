@@ -1,0 +1,92 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+
+/**
+ * Write a description of class Snake here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Snake extends Actor
+{
+    private int gridSize = EasyGrid.GRID_SIZE;
+
+    private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
+
+    private int xSpeed = -gridSize;
+    private int ySpeed = 0;
+
+    private int counter = 0;
+    private int moveDelay = 10;
+
+    public Snake()
+    {
+        setImage(new GreenfootImage(1,1));
+    }
+
+    public void addedToWorld(World world)
+    {
+        SnakeParts head = new SnakeParts("head0.png");
+        SnakeParts body = new SnakeParts("middle.png");
+        SnakeParts tail = new SnakeParts("tail.png");
+
+        parts.add(head);
+        parts.add(body);
+        parts.add(tail);
+
+        world.addObject(head, getX(), getY());
+        world.addObject(body, getX() + gridSize, getY());
+        world.addObject(tail, getX() + gridSize * 2, getY());
+    }
+
+    public void act()
+    {
+        checkKeys();
+        counter++;
+
+        if (counter >= moveDelay)
+        {
+            moveSnake();
+            counter = 0;
+        }
+
+    }
+    
+    private void moveSnake()
+    {
+        for (int i = parts.size() - 1; i > 0; i--)
+        {
+            SnakeParts current = parts.get(i);
+            SnakeParts inFront = parts.get(i - 1);
+    
+            current.setLocation(inFront.getX(), inFront.getY());
+        }
+
+        SnakeParts head = parts.get(0);
+        head.setLocation(head.getX() + xSpeed, head.getY() + ySpeed);
+    }
+    
+    private void checkKeys()
+    {
+        if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+        {
+            xSpeed = 0;
+            ySpeed = -gridSize;
+        }
+        else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+        {
+            xSpeed = 0;
+            ySpeed = gridSize;
+        }
+        else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
+        {
+            xSpeed = -gridSize;
+            ySpeed = 0;
+        }
+        else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
+        {
+            xSpeed = gridSize;
+            ySpeed = 0;
+        }
+    }
+}
