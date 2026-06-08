@@ -37,6 +37,7 @@ public class Snake extends Actor
         world.addObject(head, getX(), getY());
         world.addObject(body, getX() + gridSize, getY());
         world.addObject(tail, getX() + gridSize * 2, getY());
+        spawnApple();
     }
 
     public void act()
@@ -89,4 +90,20 @@ public class Snake extends Actor
             ySpeed = 0;
         }
     }
+    
+    private void spawnApple()
+    {
+        int numCols = getWorld().getWidth() / gridSize;
+        int numRows = getWorld().getHeight() / gridSize;
+    
+        int col = Greenfoot.getRandomNumber(numCols);
+        int row = Greenfoot.getRandomNumber(numRows);
+    
+        int x = col * gridSize + gridSize / 2;
+        int y = row * gridSize + gridSize / 2;
+    
+        getWorld().addObject(new Apple(), x, y);        
+    }
 }
+
+
