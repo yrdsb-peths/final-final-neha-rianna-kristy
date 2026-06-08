@@ -48,6 +48,16 @@ public class Snake extends Actor
         if (counter >= moveDelay)
         {
             moveSnake();
+            if (checkWallCollision())
+            {
+                Greenfoot.stop();
+                return;
+            }
+            if (checkSelfCollision())
+            {
+                Greenfoot.stop();
+                return;
+            }
             checkApple();
             counter = 0;
         }
@@ -126,6 +136,26 @@ public class Snake extends Actor
         parts.add(newPart);
         getWorld().addObject(newPart, tail.getX(), tail.getY());
     }
+    
+    private boolean checkWallCollision()
+    {
+        SnakeParts head = parts.get(0);
+        return head.getX() < 0 || head.getX() >= getWorld().getWidth() || head.getY() < 0 || head.getY() >= getWorld().getHeight();
+    }
+    
+    private boolean checkSelfCollision()
+{
+    SnakeParts head = parts.get(0);
+    for (int i = 1; i < parts.size(); i++)
+    {
+        SnakeParts part = parts.get(i);
+        if (head.getX() == part.getX() && head.getY() == part.getY())
+        {
+            return true;
+        }
+    }
+    return false;
+}
 }
 
 
