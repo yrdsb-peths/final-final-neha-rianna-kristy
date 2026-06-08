@@ -48,6 +48,7 @@ public class Snake extends Actor
         if (counter >= moveDelay)
         {
             moveSnake();
+            checkApple();
             counter = 0;
         }
 
@@ -103,6 +104,27 @@ public class Snake extends Actor
         int y = row * gridSize + gridSize / 2;
     
         getWorld().addObject(new Apple(), x, y);        
+    }
+    
+    private void checkApple()
+    {
+        SnakeParts head = parts.get(0);
+        Actor apple = head.getTouchingApple();
+    
+        if (apple != null)
+        {
+            getWorld().removeObject(apple);
+            growSnake();
+            spawnApple();
+        }
+    }
+
+    private void growSnake()
+    {
+        SnakeParts tail = parts.get(parts.size() - 1);
+        SnakeParts newPart = new SnakeParts("middle.png");
+        parts.add(newPart);
+        getWorld().addObject(newPart, tail.getX(), tail.getY());
     }
 }
 
