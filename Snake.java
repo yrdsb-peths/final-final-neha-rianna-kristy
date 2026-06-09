@@ -3,13 +3,12 @@ import java.util.ArrayList;
 
 /**
  * Write a description of class Snake here.
- * 
- * @author (Neha, Rianna) 
+ * * @author (Neha, Rianna) 
  * @version (June 2026)
  */
 public class Snake extends Actor
 {
-     private int gridSize = EasyGrid.GRID_SIZE;
+    private int gridSize = EasyGrid.GRID_SIZE;
 
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
@@ -22,13 +21,12 @@ public class Snake extends Actor
     private boolean isDead = false;
 
     private GreenfootSound eatSound = new GreenfootSound("eat_apple.wav");
-    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
+    private GreenfootSound gameOverSound = new GreenfootSound("game_over.mp3"); 
+
     public Snake()
     {
-      setImage(new GreenfootImage(1,1));
+        setImage(new GreenfootImage(1,1));
     }
-    
-    
 
     public void addedToWorld(World world)
     {
@@ -48,13 +46,9 @@ public class Snake extends Actor
 
     public void act()
     {
-        // If we flagged a death last frame, wait for the audio to finish, then stop
+        // If we flagged a death last frame, freeze all gameplay actions
         if (isDead) 
         {
-            if (!gameOverSound.isPlaying()) 
-            {
-                Greenfoot.stop();
-            }
             return; 
         }
 
@@ -69,7 +63,10 @@ public class Snake extends Actor
             // 2. NOW check if that movement put the snake out of bounds!
             if (checkWallCollision())
             {
-                gameOverSound.play(); // Play your working game over track
+                // Tell EasyGrid to turn off the background music and freeze the timer
+                ((EasyGrid)getWorld()).stopBackgroundMusic();
+                
+                gameOverSound.play(); // Play game over music
                 
                 // Draw text right in the middle
                 int centerX = getWorld().getWidth() / 2;
@@ -83,6 +80,9 @@ public class Snake extends Actor
             // 3. Check if it hit itself
             if (checkSelfCollision())
             {
+                // Tell EasyGrid to turn off the background music and freeze the timer here too
+                ((EasyGrid)getWorld()).stopBackgroundMusic();
+                
                 gameOverSound.play();
                 
                 int centerX = getWorld().getWidth() / 2;
@@ -157,8 +157,10 @@ public class Snake extends Actor
     
         if (apple != null)
         {
-            // 2. PLAY THE CRUNCH SOUND RIGHT AS THE APPLE IS EATEN!
             eatSound.play(); 
+            
+            // FIX: Changed to (EasyGrid) so the score connects to your actual scoreboard!
+            ((EasyGrid)getWorld()).addScore(); 
             
             getWorld().removeObject(apple);
             growSnake();
@@ -181,18 +183,16 @@ public class Snake extends Actor
     }
     
     private boolean checkSelfCollision()
-{
-    SnakeParts head = parts.get(0);
-    for (int i = 1; i < parts.size(); i++)
     {
-        SnakeParts part = parts.get(i);
-        if (head.getX() == part.getX() && head.getY() == part.getY())
+        SnakeParts head = parts.get(0);
+        for (int i = 1; i < parts.size(); i++)
         {
-            return true;
+            SnakeParts part = parts.get(i);
+            if (head.getX() == part.getX() && head.getY() == part.getY())
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
 }
-}
-
-
