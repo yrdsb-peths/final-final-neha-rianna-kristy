@@ -4,43 +4,56 @@ public class MyWorld extends World
 {
     private int time = 0;
     private int seconds = 0;
+    private int score = 0;
     
-    // LOAD THE BACKGROUND MUSIC
-    private GreenfootSound bgMusic = new GreenfootSound("the_mountain-game-game-music-508018 (1).mp3");
+    private GreenfootSound bgMusic = new GreenfootSound("background.wav");
+    private boolean musicStarted = false;
     
     public MyWorld()
     {
         super(600, 300, 1);
         setBackground("backgroundSnake.png");
+        
+        // Draw the initial board right when the game loads
+        updateScoreboard();
     } 
     
-    // Fallback native checks
-    public void started()
+    public void addScore()
     {
-        bgMusic.playLoop();
+        score++;
+        updateScoreboard(); // Redraw the scoreboard with the new score
     }
-
-    public void stopped()
-    {
-        bgMusic.pause();
-    }
-
-    // A method so the snake can turn off the music when it dies
+    
     public void stopBackgroundMusic()
     {
-        if (bgMusic.isPlaying())
-        {
-            bgMusic.stop();
-        }
+        bgMusic.stop();
+        musicStarted = true; 
+    }
+    
+    // A CUSTOM METHOD TO DRAW CLEAN TEXT ONTO THE BACKGROUND
+    private void updateScoreboard()
+    {
+        // 1. Start with a fresh copy of your background image to clear old text
+        GreenfootImage bg = new GreenfootImage("backgroundSnake.png");
+        
+        // 2. Set the text color and font size (Color.WHITE, 20pt font)
+        bg.setColor(Color.WHITE);
+        bg.setFont(new Font("Arial", true, false, 20));
+        
+        // 3. Draw the strings onto the image at specific (X, Y) coordinates
+        bg.drawString("Time: " + seconds + "s", 30, 30);
+        bg.drawString("Score: " + score, 480, 30);
+        
+        // 4. Apply this freshly drawn image as the world's background
+        setBackground(bg);
     }
     
     public void act()
     {
-        // --- BULLETPROOF AUDIO FALLBACK ---
-        // If the game is running but the music hasn't started yet, force play it!
-        if (!bgMusic.isPlaying()) 
+        if (!musicStarted) 
         {
             bgMusic.playLoop();
+            musicStarted = true;
         }
 
         time++;
@@ -48,8 +61,7 @@ public class MyWorld extends World
         if(time % 60 == 0)
         {
             seconds++;
+            updateScoreboard(); // Redraw the scoreboard every second to update the time
         }
-    
-        showText("Time: " + seconds, 80, 20);
     }
 }
