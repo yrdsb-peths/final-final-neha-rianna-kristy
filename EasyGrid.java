@@ -2,12 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class EasyGrid here.
- * 
- * @author (Rianna) 
+ * * @author (Rianna) 
  * @version (June 2026)
  */
-import greenfoot.*;
-
 public class EasyGrid extends World
 {
     public static final int GRID_SIZE = 20;
@@ -15,6 +12,9 @@ public class EasyGrid extends World
     private int time = 0;
     private int seconds = 0;
     private int score = 0;
+    
+    // 1. ADD THIS FLAG TO TRACK IF THE PLAYER IS ALIVE OR DEAD
+    private boolean isGameOver = false; 
     
     private Scoreboard scoreboard = new Scoreboard();
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
@@ -42,10 +42,19 @@ public class EasyGrid extends World
     {
         bgMusic.stop();
         musicStarted = true; 
+        
+        // 2. TRIGGER THE GAME OVER FLAG TO FREEZE THE WORLD TIMER
+        isGameOver = true; 
     }
 
     public void act()
     {
+        // 3. IF THE SNAKE DIES, EXIT IMMEDIATELY SO TIME STOPS INCREASING!
+        if (isGameOver)
+        {
+            return;
+        }
+
         if (!musicStarted) 
         {
             bgMusic.playLoop();
@@ -61,7 +70,6 @@ public class EasyGrid extends World
         }
     }
 
-    
     private void prepare()
     {
         

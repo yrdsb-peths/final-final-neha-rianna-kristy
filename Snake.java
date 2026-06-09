@@ -21,7 +21,7 @@ public class Snake extends Actor
     private boolean isDead = false;
 
     private GreenfootSound eatSound = new GreenfootSound("eat_apple.wav");
-    private GreenfootSound gameOverSound = new GreenfootSound("game_over.mp3"); 
+    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav"); 
 
     public Snake()
     {
