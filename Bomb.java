@@ -10,13 +10,11 @@ public class Bomb extends Actor
 {
     public Bomb()
     {
+        setImage("bomb.png"); 
+        
         GreenfootImage img = getImage();
-        
-        
         int randomSize = Greenfoot.getRandomNumber(16) + 10; 
-        
         img.scale(randomSize, randomSize);
-        
         setImage(img);
     }
     
