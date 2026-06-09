@@ -17,7 +17,7 @@ public class EasyGrid extends World
     private int score = 0;
     
     private Scoreboard scoreboard = new Scoreboard();
-    private GreenfootSound bgMusic = new GreenfootSound("background.wav");
+    private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     private boolean musicStarted = false;
 
     public EasyGrid()
