@@ -71,18 +71,15 @@ public class TitlePage extends World
     
     private void prepare()
     {
+        
+        
         // Game Title
         addObject(new Logo(), 500, 275);
 
-        // How To Play Headers & Instructions
-        Label howToPlayHeader = new Label("How to Play:", 24);
-        addObject(howToPlayHeader, 300, 130);
+    
         
         Label instructions2 = new Label("Use \u2190 \u2191 \u2193 \u2192 to Move", 20);
         addObject(instructions2, 300, 200);
-
-        howToPlay = new HowToPlay();
-        addObject(howToPlay, 300, 340);
         
 
         
