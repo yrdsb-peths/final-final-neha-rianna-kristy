@@ -81,11 +81,10 @@ public class TitlePage extends World
         Label instructions2 = new Label("Use \u2190 \u2191 \u2193 \u2192 to Move", 20);
         addObject(instructions2, 300, 200);
 
-        easyBtn = new EasyButton(); 
-        addObject(easyBtn, 50, 50);
-
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 340);
+        
+        
         
  
     }
