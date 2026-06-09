@@ -1,10 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class EasyGrid here.
- * * @author (Rianna) 
- * @version (June 2026)
- */
 public class EasyGrid extends World
 {
     public static final int GRID_SIZE = 20;
@@ -12,13 +7,14 @@ public class EasyGrid extends World
     private int time = 0;
     private int seconds = 0;
     private int score = 0;
-    
-    // 1. ADD THIS FLAG TO TRACK IF THE PLAYER IS ALIVE OR DEAD
     private boolean isGameOver = false; 
     
     private Scoreboard scoreboard = new Scoreboard();
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     private boolean musicStarted = false;
+    
+    // Sound that plays when a bomb appears
+    private GreenfootSound bombSpawnSound = new GreenfootSound("bomb_spawn.mp3");
 
     public EasyGrid()
     {    
@@ -26,10 +22,28 @@ public class EasyGrid extends World
         setBackground("easy_grid.png");
         addObject(new Snake(), 90, 110);
         
-        // Adding the scoreboard to the screen (centered near the top)
         addObject(scoreboard, 109, 20); 
-        
         prepare();
+    }
+
+    // This is the method that drops a bomb randomly on your grid
+    public void spawnBomb()
+    {
+        int numCols = getWidth() / GRID_SIZE;
+        int numRows = getHeight() / GRID_SIZE;
+
+        int col = Greenfoot.getRandomNumber(numCols);
+        int row = Greenfoot.getRandomNumber(numRows);
+
+        int x = col * GRID_SIZE + GRID_SIZE / 2;
+        int y = row * GRID_SIZE + GRID_SIZE / 2;
+
+        // Keep it below the scoreboard area
+        if (y > 40) 
+        {
+            addObject(new Bomb(), x, y);
+            bombSpawnSound.play(); // Plays your spawn audio!
+        }
     }
 
     public void addScore()
@@ -42,14 +56,11 @@ public class EasyGrid extends World
     {
         bgMusic.stop();
         musicStarted = true; 
-        
-        // 2. TRIGGER THE GAME OVER FLAG TO FREEZE THE WORLD TIMER
         isGameOver = true; 
     }
 
     public void act()
     {
-        // 3. IF THE SNAKE DIES, EXIT IMMEDIATELY SO TIME STOPS INCREASING!
         if (isGameOver)
         {
             return;
@@ -72,6 +83,5 @@ public class EasyGrid extends World
 
     private void prepare()
     {
-        
     }
 }
