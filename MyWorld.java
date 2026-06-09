@@ -6,7 +6,7 @@ public class MyWorld extends World
     private int seconds = 0;
     
     // LOAD THE BACKGROUND MUSIC
-    private GreenfootSound bgMusic = new GreenfootSound("background_music.wav");
+    private GreenfootSound bgMusic = new GreenfootSound("the_mountain-game-game-music-508018 (1).mp3");
     
     public MyWorld()
     {
