@@ -1,8 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TitlePage here.
- * * @author Rianna
+ * Title Screen
+ * 
+ * @author Rianna, Kristy, Neha
  * @version May 2026
  */
 public class TitlePage extends World
@@ -12,9 +13,9 @@ public class TitlePage extends World
     
     public TitlePage()
     {    
-        super(600, 300, 1);
+        super(1000, 750, 1);
 
-        setBackground(new GreenfootImage("backgroundSnake.png"));
+        setBackground(new GreenfootImage("background.png"));
         
         prepare();
     }
@@ -71,8 +72,7 @@ public class TitlePage extends World
     private void prepare()
     {
         // Game Title
-        Label titleLabel = new Label("Sssnack Attack", 60);
-        addObject(titleLabel, 300, 60);
+        addObject(new Logo(), 500, 300);
 
         // How To Play Headers & Instructions
         Label howToPlayHeader = new Label("How to Play:", 24);
@@ -84,8 +84,10 @@ public class TitlePage extends World
         howToPlay = new HowToPlay();
         addObject(howToPlay, 300, 340);
         
+
         
         
  
     }
+    
 }
