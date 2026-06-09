@@ -4,12 +4,12 @@ import java.util.ArrayList;
 /**
  * Write a description of class Snake here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Neha, Rianna) 
+ * @version (June 2026)
  */
 public class Snake extends Actor
 {
-    private int gridSize = EasyGrid.GRID_SIZE;
+     private int gridSize = EasyGrid.GRID_SIZE;
 
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
@@ -18,11 +18,17 @@ public class Snake extends Actor
 
     private int counter = 0;
     private int moveDelay = 10;
+    
+    private boolean isDead = false;
 
+    private GreenfootSound eatSound = new GreenfootSound("eat_apple.wav");
+    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav");
     public Snake()
     {
-        setImage(new GreenfootImage(1,1));
+      setImage(new GreenfootImage(1,1));
     }
+    
+    
 
     public void addedToWorld(World world)
     {
@@ -42,26 +48,54 @@ public class Snake extends Actor
 
     public void act()
     {
+        // If we flagged a death last frame, wait for the audio to finish, then stop
+        if (isDead) 
+        {
+            if (!gameOverSound.isPlaying()) 
+            {
+                Greenfoot.stop();
+            }
+            return; 
+        }
+
         checkKeys();
         counter++;
 
         if (counter >= moveDelay)
         {
+            // 1. Move the snake FIRST
             moveSnake();
+
+            // 2. NOW check if that movement put the snake out of bounds!
             if (checkWallCollision())
             {
-                Greenfoot.stop();
+                gameOverSound.play(); // Play your working game over track
+                
+                // Draw text right in the middle
+                int centerX = getWorld().getWidth() / 2;
+                int centerY = getWorld().getHeight() / 2;
+                getWorld().showText("GAME OVER", centerX, centerY);
+                
+                isDead = true; // Turn on the death flag
                 return;
             }
+
+            // 3. Check if it hit itself
             if (checkSelfCollision())
             {
-                Greenfoot.stop();
+                gameOverSound.play();
+                
+                int centerX = getWorld().getWidth() / 2;
+                int centerY = getWorld().getHeight() / 2;
+                getWorld().showText("GAME OVER", centerX, centerY);
+                
+                isDead = true;
                 return;
             }
+            
             checkApple();
             counter = 0;
         }
-
     }
     
     private void moveSnake()
@@ -123,6 +157,9 @@ public class Snake extends Actor
     
         if (apple != null)
         {
+            // 2. PLAY THE CRUNCH SOUND RIGHT AS THE APPLE IS EATEN!
+            eatSound.play(); 
+            
             getWorld().removeObject(apple);
             growSnake();
             spawnApple();
