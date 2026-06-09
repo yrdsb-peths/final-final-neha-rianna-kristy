@@ -1,16 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Write a description of class Snake here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Snake extends Actor
 {
     private int gridSize = EasyGrid.GRID_SIZE;
-
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
     private int xSpeed = -gridSize;
@@ -18,6 +12,13 @@ public class Snake extends Actor
 
     private int counter = 0;
     private int moveDelay = 10;
+    private boolean isDead = false;
+
+    private GreenfootSound eatSound = new GreenfootSound("eat_apple.wav");
+    private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav"); 
+    
+    // Sound that plays when you hit a bomb
+    private GreenfootSound bombExplodeSound = new GreenfootSound("bomb_explode.mp3");
 
     public Snake()
     {
@@ -42,26 +43,37 @@ public class Snake extends Actor
 
     public void act()
     {
+        if (isDead) 
+        {
+            return; 
+        }
+
         checkKeys();
         counter++;
 
         if (counter >= moveDelay)
         {
             moveSnake();
+
             if (checkWallCollision())
             {
-                Greenfoot.stop();
+                executeGameOver("GAME OVER");
                 return;
             }
+
             if (checkSelfCollision())
             {
-                Greenfoot.stop();
+                executeGameOver("GAME OVER");
                 return;
             }
+            
+            // CHECK FOR BOMBS HERE DIRECTLY
+            checkBombCollision();
+            if (isDead) return; 
+            
             checkApple();
             counter = 0;
         }
-
     }
     
     private void moveSnake()
@@ -70,7 +82,6 @@ public class Snake extends Actor
         {
             SnakeParts current = parts.get(i);
             SnakeParts inFront = parts.get(i - 1);
-    
             current.setLocation(inFront.getX(), inFront.getY());
         }
 
@@ -123,9 +134,39 @@ public class Snake extends Actor
     
         if (apple != null)
         {
+            eatSound.play(); 
+            ((EasyGrid)getWorld()).addScore(); 
             getWorld().removeObject(apple);
             growSnake();
             spawnApple();
+            
+            // Spawn a bomb every time an apple is eaten!
+            ((EasyGrid)getWorld()).spawnBomb();
+        }
+    }
+
+    // SIMPLIFIED BOMB CHECKER: Checks if a bomb is sitting exactly where the head is
+    private void checkBombCollision()
+    {
+        SnakeParts head = parts.get(0);
+        
+        // Look at the head's exact X and Y position for any Bombs
+        List<Bomb> bombs = getWorld().getObjectsAt(head.getX(), head.getY(), Bomb.class);
+        
+        if (!bombs.isEmpty())
+        {
+            // Get the bomb we stepped on
+            Bomb hitBomb = bombs.get(0);
+            
+            // Stop music and play explosion!
+            ((EasyGrid)getWorld()).stopBackgroundMusic();
+            bombExplodeSound.play(); 
+            
+            // Remove it from the grid
+            getWorld().removeObject(hitBomb);
+            
+            // End the game
+            executeGameOver("BOOM! GAME OVER");
         }
     }
 
@@ -144,18 +185,29 @@ public class Snake extends Actor
     }
     
     private boolean checkSelfCollision()
-{
-    SnakeParts head = parts.get(0);
-    for (int i = 1; i < parts.size(); i++)
     {
-        SnakeParts part = parts.get(i);
-        if (head.getX() == part.getX() && head.getY() == part.getY())
+        SnakeParts head = parts.get(0);
+        for (int i = 1; i < parts.size(); i++)
         {
-            return true;
+            SnakeParts part = parts.get(i);
+            if (head.getX() == part.getX() && head.getY() == part.getY())
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-}
 
-
+    private void executeGameOver(String message)
+    {
+        ((EasyGrid)getWorld()).stopBackgroundMusic();
+        if (message.equals("GAME OVER")) {
+            gameOverSound.play();
+        }
+        
+        int centerX = getWorld().getWidth() / 2;
+        int centerY = getWorld().getHeight() / 2;
+        getWorld().showText(message, centerX, centerY);
+        isDead = true;
+    }
+}
