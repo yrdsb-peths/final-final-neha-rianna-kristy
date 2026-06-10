@@ -10,6 +10,7 @@ public class Snake extends Actor
     private int xSpeed = 0;
     private int ySpeed = 0;
     private boolean isStarted = false;
+    private boolean isFirstApple = true;
 
     private int counter = 0;
     private int moveDelay = 10;
@@ -18,7 +19,6 @@ public class Snake extends Actor
     private GreenfootSound eatSound = new GreenfootSound("eat_apple.wav");
     private GreenfootSound gameOverSound = new GreenfootSound("game_over.wav"); 
     
-    // Sound that plays when you hit a bomb
     private GreenfootSound bombExplodeSound = new GreenfootSound("bomb_explode.mp3");
     
     private boolean reverseControls;
@@ -159,16 +159,36 @@ public class Snake extends Actor
     
     private void spawnApple()
     {
-        int numCols = getWorld().getWidth() / gridSize;
-        int numRows = getWorld().getHeight() / gridSize;
+        if(isFirstApple)
+        {
+            if (getWorld() instanceof MegaGrid)
+            {
+                getWorld().addObject(new Apple(), 154, 374);
+            }
+            else if (getWorld() instanceof SmallGrid)
+            {
+                getWorld().addObject(new Apple(), 66, 154);
+            }
+            else
+            {
+                getWorld().addObject(new Apple(), 154, 286);
+            }
     
-        int col = Greenfoot.getRandomNumber(numCols);
-        int row = Greenfoot.getRandomNumber(numRows);
-    
-        int x = col * gridSize + gridSize / 2;
-        int y = row * gridSize + gridSize / 2;
-    
-        getWorld().addObject(new Apple(), x, y);        
+            isFirstApple = false;
+        }
+        else
+        {
+            int numCols = getWorld().getWidth() / gridSize;
+            int numRows = getWorld().getHeight() / gridSize;
+        
+            int col = Greenfoot.getRandomNumber(numCols);
+            int row = Greenfoot.getRandomNumber(numRows);
+        
+            int x = col * gridSize + gridSize / 2;
+            int y = row * gridSize + gridSize / 2;
+        
+            getWorld().addObject(new Apple(), x, y);    
+        }
     }
     
     private void checkApple()
@@ -190,22 +210,17 @@ public class Snake extends Actor
     {
         SnakeParts head = parts.get(0);
         
-        // Look at the head's exact X and Y position for any Bombs
         List<Bomb> bombs = getWorld().getObjectsAt(head.getX(), head.getY(), Bomb.class);
         
         if (!bombs.isEmpty())
         {
-            // Get the bomb we stepped on
             Bomb hitBomb = bombs.get(0);
             
-            // Stop music and play explosion!
             ((BaseGrid)getWorld()).stopBackgroundMusic();
             bombExplodeSound.play(); 
             
-            // Remove it from the grid
             getWorld().removeObject(hitBomb);
             
-            // End the game
             executeGameOver("BOOM! GAME OVER");
         }
     }
