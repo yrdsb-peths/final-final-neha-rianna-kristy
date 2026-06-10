@@ -30,16 +30,9 @@ public class TitlePage extends World
 
     }
     
-    /**
-     * Handles updating button backgrounds when the mouse hovers over them.
-     */
-    
     
     private void prepare()
     {
-        
-        
-        // Game Logo
         addObject(new Logo(), 500, 275);
 
     }
