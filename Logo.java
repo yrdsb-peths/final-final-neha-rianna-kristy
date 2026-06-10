@@ -15,7 +15,7 @@ public class Logo extends Actor
     public Logo()
     {
         GreenfootImage logo = new GreenfootImage("sssnackattack.png");
-        logo.scale(500, 500);
+        logo.scale(400, 400);
         setImage(logo);
     }
     
