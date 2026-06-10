@@ -34,10 +34,11 @@ public class TutorialPopup extends Actor
         img.drawString("HOW TO PLAY:", 160, 115);
         
         img.setFont(new Font("Monospaced", false, false, 30));
-        img.drawString("Use arrow keys to move.", 50, 205);
-        img.drawString("Eat apples to grow.", 50, 255);
-        img.drawString("Avoid hitting walls and yourself.", 50, 305);
-
+        img.drawString("Use arrow keys to move", 50, 205);
+        img.drawString("Eat apples to grow", 50, 255);
+        img.drawString("Avoid hitting walls and yourself", 50, 305);
+        img.drawString("CLICK TO EXIT", 240, 355);
+        
         setImage(img);
     }
 }

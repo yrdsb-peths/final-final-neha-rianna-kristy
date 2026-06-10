@@ -10,7 +10,6 @@ public class BaseGrid extends World
     public int score = 0;
     public boolean isGameOver = false; 
     
-    // Tracks the current level
     public int level = 1; 
     
     public Scoreboard scoreboard = new Scoreboard();
