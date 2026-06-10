@@ -9,40 +9,36 @@ public class PopupButton extends Actor
     {
         this.text = text;
         this.action = action;
-
-        updateImage(false);
     }
 
+    public void addedToWorld(World world)
+    {
+        updateImage();
+    }
+    
     public void act()
     {
         if (Greenfoot.mouseClicked(this))
         {
             action.run();
         }
-
-        if (Greenfoot.mouseMoved(this))
-        {
-            updateImage(true);
-        }
-
-        if (Greenfoot.mouseDragEnded(this))
-        {
-            updateImage(false);
-        }
     }
 
-    private void updateImage(boolean hover)
+    private void updateImage()
     {
-        Color bg = hover ? Color.BLACK : Color.WHITE;
-        Color fg = hover ? Color.WHITE : Color.BLACK;
+        int buttonWidth = getWorld().getWidth() / 4;
+        int buttonHeight = getWorld().getHeight() / 12;
 
-        GreenfootImage img = new GreenfootImage(220, 60);
-        img.setColor(bg);
-        img.fillRect(0, 0, 220, 60);
+        GreenfootImage img = new GreenfootImage(buttonWidth, buttonHeight);
 
-        img.setColor(fg);
-        img.setFont(new Font("Monospaced", true, false, 24));
-        img.drawString(text, 20, 38);
+        img.setColor(Color.WHITE);
+        img.fillRect(0, 0, buttonWidth, buttonHeight);
+
+        img.setColor(Color.BLACK);
+        img.drawRect(0, 0, buttonWidth - 1, buttonHeight - 1);
+
+        img.setFont(new Font("Monospaced", true, false, buttonHeight / 2));
+        img.drawString(text, buttonWidth / 8, buttonHeight * 2 / 3);
 
         setImage(img);
     }

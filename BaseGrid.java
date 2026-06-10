@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List; // REQUIRED: Lets us find the Snake in the world to speed it up
+import java.util.List;
 
 public class BaseGrid extends World
 {

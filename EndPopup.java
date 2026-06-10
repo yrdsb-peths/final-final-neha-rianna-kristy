@@ -7,10 +7,10 @@ public class EndPopup extends Actor
 
     public EndPopup(String message, BaseGrid previousWorld)
     {
-        this.previousWorld = previousWorld;
-        this.message = message;
+        int popupWidth = previousWorld.getWidth() * 2 / 3;
+        int popupHeight = previousWorld.getHeight() * 2 / 3;
 
-        GreenfootImage img = new GreenfootImage(700, 500);
+        GreenfootImage img = new GreenfootImage(popupWidth, popupHeight);
 
         img.setColor(new Color(0, 0, 0, 200));
         img.fillRect(0, 0, 700, 500);
