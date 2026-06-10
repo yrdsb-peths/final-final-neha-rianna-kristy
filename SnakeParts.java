@@ -10,10 +10,6 @@ public class SnakeParts extends Actor
 {
     public SnakeParts(String picture)
     {
-        setImage(picture);
-        GreenfootImage img = new GreenfootImage(picture);
-        img.scale(20, 20);
-        setImage(img);
 
     }
     public void act()

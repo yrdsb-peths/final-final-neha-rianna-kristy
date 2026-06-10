@@ -23,6 +23,7 @@ public class Snake extends Actor
     public Snake()
     {
         setImage(new GreenfootImage(1,1));
+
     }
 
     public void addedToWorld(World world)
