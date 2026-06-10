@@ -22,7 +22,7 @@ public class EasyGrid extends World
 
     public EasyGrid()
     {    
-        super(218, 218, 1);
+        super(436, 436, 1);
         setBackground("easy_grid.png");
         addObject(new Snake(), 90, 110);
         

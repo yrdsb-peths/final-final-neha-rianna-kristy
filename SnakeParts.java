@@ -1,24 +1,16 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class SnakeParts here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class SnakeParts extends Actor
 {
     public SnakeParts(String picture)
     {
-        setImage(picture);
         GreenfootImage img = new GreenfootImage(picture);
-        img.scale(20, 20);
+        img.scale(EasyGrid.GRID_SIZE, EasyGrid.GRID_SIZE);
         setImage(img);
-
     }
+
     public void act()
     {
-        // Add your action code here.
     }
 
     public Actor getTouchingApple()

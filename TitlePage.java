@@ -8,83 +8,52 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitlePage extends World
 {
-    private HowToPlay howToPlay;
-    private EasyButton easyBtn; 
-    
     public TitlePage()
     {    
         super(1000, 750, 1);
 
         setBackground(new GreenfootImage("background.png"));
         
+        HowToPlay instr = new HowToPlay();
+        addObject(instr, 500, 600);
+        
         prepare();
+        
+        
+        ClassicButton classic = new ClassicButton();
+        addObject(classic, 500, 250);
+        
+        BombsButton bombs = new BombsButton();
+        addObject(bombs, 500, 350);
+
+        FastButton fast = new FastButton();
+        addObject(fast, 500, 450);
+
+        ReverseButton reverse = new ReverseButton();
+        addObject(reverse, 500, 550);
+        
+        MegaButton mega = new MegaButton();
+        addObject(reverse, 500, 650);
+
     }
     
     public void act()
     {
-        handleHoverEffects();
-        handleClicks();
+
     }
     
     /**
      * Handles updating button backgrounds when the mouse hovers over them.
      */
-    private void handleHoverEffects()
-    {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        easyBtn.setClearBackground();
-        howToPlay.setClearBackground();
-        if (mouse == null)
-        {
-            return;
-        }
-        if (mouse != null)
-        {
-            Actor actor = mouse.getActor();
-            
-            if (actor == easyBtn)
-            {
-                easyBtn.setWhiteBackground();
-            }
-            else if (actor == howToPlay)
-            {
-                howToPlay.setWhiteBackground();
-            }
-        }
-    }
     
-    /**
-     * Detects clicks on the buttons and switches worlds accordingly.
-     */
-    private void handleClicks()
-    {
-        if (Greenfoot.mouseClicked(easyBtn)) 
-        {
-            Greenfoot.setWorld(new EasyGrid()); 
-        }
-        
-        if(Greenfoot.mouseClicked(howToPlay))
-        {
-            
-        }
-    }
     
     private void prepare()
     {
         
         
-        // Game Title
+        // Game Logo
         addObject(new Logo(), 500, 275);
 
-    
-        
-        Label instructions2 = new Label("Use \u2190 \u2191 \u2193 \u2192 to Move", 20);
-        addObject(instructions2, 300, 200);
-        
-
-        
-        
- 
     }
     
 }
