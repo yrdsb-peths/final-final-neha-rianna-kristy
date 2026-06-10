@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Snake extends Actor
 {
-    private int gridSize = EasyGrid.GRID_SIZE;
+    private int gridSize = BaseGrid.GRID_SIZE;
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
     private int xSpeed = -gridSize;
@@ -166,13 +166,13 @@ public class Snake extends Actor
         if (apple != null)
         {
             eatSound.play(); 
-            ((EasyGrid)getWorld()).addScore(); 
+            ((BaseGrid)getWorld()).addScore(); 
             getWorld().removeObject(apple);
             growSnake();
             spawnApple();
             
             // Spawn a bomb every time an apple is eaten!
-            ((EasyGrid)getWorld()).spawnBomb();
+            ((BaseGrid)getWorld()).spawnBomb();
         }
     }
 
@@ -190,7 +190,7 @@ public class Snake extends Actor
             Bomb hitBomb = bombs.get(0);
             
             // Stop music and play explosion!
-            ((EasyGrid)getWorld()).stopBackgroundMusic();
+            ((BaseGrid)getWorld()).stopBackgroundMusic();
             bombExplodeSound.play(); 
             
             // Remove it from the grid
@@ -231,7 +231,7 @@ public class Snake extends Actor
 
     private void executeGameOver(String message)
     {
-        ((EasyGrid)getWorld()).stopBackgroundMusic();
+        ((BaseGrid)getWorld()).stopBackgroundMusic();
         if (message.equals("GAME OVER")) {
             gameOverSound.play();
         }

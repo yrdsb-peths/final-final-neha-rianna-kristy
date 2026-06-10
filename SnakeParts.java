@@ -5,7 +5,7 @@ public class SnakeParts extends Actor
     public SnakeParts(String picture)
     {
         GreenfootImage img = new GreenfootImage(picture);
-        img.scale(EasyGrid.GRID_SIZE, EasyGrid.GRID_SIZE);
+        img.scale(BaseGrid.GRID_SIZE, BaseGrid.GRID_SIZE);
         setImage(img);
     }
 

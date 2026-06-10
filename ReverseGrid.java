@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class ReverseGrid extends World
+public class ReverseGrid extends BaseGrid
 {
 
     /**
@@ -9,8 +9,6 @@ public class ReverseGrid extends World
      */
     public ReverseGrid()
     {    
-        super(436, 436, 1);
-        setBackground("easy_grid.png");
         addObject(new Snake(true), 90, 110);
     }
 }

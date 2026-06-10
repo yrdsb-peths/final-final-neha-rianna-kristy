@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List; // REQUIRED: Lets us find the Snake in the world to speed it up
 
-public class EasyGrid extends World
+public class BaseGrid extends World
 {
     public static final int GRID_SIZE = 20;
 
@@ -20,11 +20,10 @@ public class EasyGrid extends World
     // Sound that plays when a bomb appears
     private GreenfootSound bombSpawnSound = new GreenfootSound("bomb_spawn.mp3");
 
-    public EasyGrid()
+    public BaseGrid()
     {    
         super(436, 436, 1);
         setBackground("easy_grid.png");
-        addObject(new Snake(false), 90, 110);
         
         addObject(scoreboard, 109, 20); 
         

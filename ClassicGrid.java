@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ClassicGrid extends World
+public class ClassicGrid extends BaseGrid
 {
 
     /**
@@ -15,9 +15,6 @@ public class ClassicGrid extends World
      */
     public ClassicGrid()
     {    
-        super(436, 436, 1);
-        setBackground("easy_grid.png");
         addObject(new Snake(false), 90, 110);
-
     }
 }

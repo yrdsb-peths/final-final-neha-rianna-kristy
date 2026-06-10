@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MegaGrid extends World
+public class MegaGrid extends BaseGrid
 {
 
     /**
@@ -15,8 +15,6 @@ public class MegaGrid extends World
      */
     public MegaGrid()
     {    
-        super(654, 654, 1);
-        setBackground("easy_grid.png");
         addObject(new Snake(false), 90, 110);
     }
 }

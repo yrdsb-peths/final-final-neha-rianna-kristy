@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BombGrid extends World
+public class BombGrid extends BaseGrid
 {
 
     /**
@@ -15,8 +15,6 @@ public class BombGrid extends World
      */
     public BombGrid()
     {    
-        super(436, 436, 1);
-        setBackground("easy_grid.png");
         addObject(new Snake(false), 90, 110);
     }
 }

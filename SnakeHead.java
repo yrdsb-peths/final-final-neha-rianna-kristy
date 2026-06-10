@@ -13,7 +13,7 @@ public class SnakeHead extends SnakeParts
         for (int i = 0; i < 10; i++)
         {
             headFrames[i] = new GreenfootImage("head" + i + ".png");
-            headFrames[i].scale(EasyGrid.GRID_SIZE, EasyGrid.GRID_SIZE);
+            headFrames[i].scale(BaseGrid.GRID_SIZE, BaseGrid.GRID_SIZE);
         }
 
         setImage(headFrames[0]);
