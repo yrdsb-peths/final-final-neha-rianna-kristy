@@ -84,11 +84,17 @@ public class Snake extends Actor
         {
             SnakeParts current = parts.get(i);
             SnakeParts inFront = parts.get(i - 1);
+            
+            int xMove = inFront.getX() - current.getX();
+            int yMove = inFront.getY() - current.getY();
+            
             current.setLocation(inFront.getX(), inFront.getY());
+            rotatePart(current, xMove, yMove);
         }
 
         SnakeParts head = parts.get(0);
         head.setLocation(head.getX() + xSpeed, head.getY() + ySpeed);
+        rotatePart(head, xSpeed, ySpeed);
     }
     
     private void checkKeys()
