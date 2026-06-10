@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List; // ADDED THIS LINE
+import java.util.List; // REQUIRED: Lets us find the Snake in the world to speed it up
 
 public class EasyGrid extends World
 {
@@ -10,7 +10,8 @@ public class EasyGrid extends World
     private int score = 0;
     private boolean isGameOver = false; 
     
-    private int level = 1; // ADDED THIS LINE
+    // Tracks the current level
+    private int level = 1; 
     
     private Scoreboard scoreboard = new Scoreboard();
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
@@ -27,11 +28,11 @@ public class EasyGrid extends World
         
         addObject(scoreboard, 109, 20); 
         
-        showText("Level: " + level, 109, 5); // ADDED THIS LINE
+        showText("Level: " + level, 100, 200);
+        
         prepare();
     }
 
-    // This is the method that drops a bomb randomly on your grid
     public void spawnBomb()
     {
         int numCols = getWidth() / GRID_SIZE;
@@ -43,11 +44,11 @@ public class EasyGrid extends World
         int x = col * GRID_SIZE + GRID_SIZE / 2;
         int y = row * GRID_SIZE + GRID_SIZE / 2;
 
-        // Keep it below the scoreboard area
+        
         if (y > 40) 
         {
             addObject(new Bomb(), x, y);
-            bombSpawnSound.play(); // Plays your spawn audio!
+            bombSpawnSound.play(); 
         }
     }
 
@@ -84,11 +85,12 @@ public class EasyGrid extends World
             seconds++;
             scoreboard.updateValues(score, seconds);
             
-            // --- ADDED THIS BLOCK BELOW ---
+            // Every 5 seconds, increase the difficulty level!
             if (seconds % 5 == 0)
             {
                 level++;
-                showText("Level: " + level, 109, 5);
+                
+                showText("Level: " + level, 100, 200);
                 
                 List<Snake> snakes = getObjects(Snake.class);
                 if (!snakes.isEmpty())
