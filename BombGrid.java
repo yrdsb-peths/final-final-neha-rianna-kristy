@@ -1,11 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class BombGrid here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class BombGrid extends BaseGrid
 {
     private GreenfootSound bombSpawnSound = new GreenfootSound("bomb_spawn.mp3");
