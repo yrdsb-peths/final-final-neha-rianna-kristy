@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Snake extends Actor
 {
-    private int gridSize = EasyGrid.GRID_SIZE;
+    private int gridSize = BaseGrid.GRID_SIZE;
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
     private int xSpeed = -gridSize;
@@ -19,11 +19,13 @@ public class Snake extends Actor
     
     // Sound that plays when you hit a bomb
     private GreenfootSound bombExplodeSound = new GreenfootSound("bomb_explode.mp3");
+    
+    private boolean reverseControls;
 
-    public Snake()
+    public Snake(boolean reverseControls)
     {
         setImage(new GreenfootImage(1,1));
-
+        this.reverseControls = reverseControls;
     }
 
     public void addedToWorld(World world)
@@ -68,7 +70,6 @@ public class Snake extends Actor
                 return;
             }
             
-            // CHECK FOR BOMBS HERE DIRECTLY
             checkBombCollision();
             if (isDead) return; 
             
@@ -83,34 +84,67 @@ public class Snake extends Actor
         {
             SnakeParts current = parts.get(i);
             SnakeParts inFront = parts.get(i - 1);
+            
+            int xMove = inFront.getX() - current.getX();
+            int yMove = inFront.getY() - current.getY();
+            
             current.setLocation(inFront.getX(), inFront.getY());
+            rotatePart(current, xMove, yMove);
         }
 
         SnakeParts head = parts.get(0);
         head.setLocation(head.getX() + xSpeed, head.getY() + ySpeed);
+        rotatePart(head, xSpeed, ySpeed);
     }
     
     private void checkKeys()
     {
-        if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+        if (!reverseControls)
         {
-            xSpeed = 0;
-            ySpeed = -gridSize;
+            if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = -gridSize;
+            }
+            else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = gridSize;
+            }
+            else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
+            {
+                xSpeed = -gridSize;
+                ySpeed = 0;
+            }
+            else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
+            {
+                xSpeed = gridSize;
+                ySpeed = 0;
+            }
         }
-        else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+        else
         {
-            xSpeed = 0;
-            ySpeed = gridSize;
-        }
-        else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
-        {
-            xSpeed = -gridSize;
-            ySpeed = 0;
-        }
-        else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
-        {
-            xSpeed = gridSize;
-            ySpeed = 0;
+            // Reversed controls
+            if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = gridSize;
+            }
+            else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = -gridSize;
+            }
+            else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
+            {
+                xSpeed = gridSize;
+                ySpeed = 0;
+            }
+            else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
+            {
+                xSpeed = -gridSize;
+                ySpeed = 0;
+            }
         }
     }
     
@@ -136,17 +170,16 @@ public class Snake extends Actor
         if (apple != null)
         {
             eatSound.play(); 
-            ((EasyGrid)getWorld()).addScore(); 
+            ((BaseGrid)getWorld()).addScore(); 
             getWorld().removeObject(apple);
             growSnake();
-            spawnApple();
-            
-            // Spawn a bomb every time an apple is eaten!
-            ((EasyGrid)getWorld()).spawnBomb();
+            if (!(getWorld() instanceof AppleRainGrid))
+            {
+                spawnApple();
+            }
         }
     }
 
-    // SIMPLIFIED BOMB CHECKER: Checks if a bomb is sitting exactly where the head is
     private void checkBombCollision()
     {
         SnakeParts head = parts.get(0);
@@ -160,7 +193,7 @@ public class Snake extends Actor
             Bomb hitBomb = bombs.get(0);
             
             // Stop music and play explosion!
-            ((EasyGrid)getWorld()).stopBackgroundMusic();
+            ((BaseGrid)getWorld()).stopBackgroundMusic();
             bombExplodeSound.play(); 
             
             // Remove it from the grid
@@ -175,7 +208,7 @@ public class Snake extends Actor
     {
         SnakeParts tail = parts.get(parts.size() - 1);
         SnakeParts newPart = new SnakeParts("middle.png");
-        parts.add(newPart);
+        parts.add(parts.size()-1, newPart);
         getWorld().addObject(newPart, tail.getX(), tail.getY());
     }
     
@@ -201,16 +234,12 @@ public class Snake extends Actor
 
     private void executeGameOver(String message)
     {
-        ((EasyGrid)getWorld()).stopBackgroundMusic();
-        if (message.equals("GAME OVER")) {
-            gameOverSound.play();
-        }
-        
-        int centerX = getWorld().getWidth() / 2;
-        int centerY = getWorld().getHeight() / 2;
-        getWorld().showText(message, centerX, centerY);
+        ((BaseGrid)getWorld()).stopBackgroundMusic();
         isDead = true;
-        
+    
+        BaseGrid world = (BaseGrid)getWorld();
+    
+        world.addObject(new EndPopup(message), world.getWidth()/2, world.getHeight()/2);
     }
     
     public void increaseSpeed()
@@ -218,6 +247,26 @@ public class Snake extends Actor
         if (moveDelay > 2)
         {
             moveDelay--; 
+        }
+    }
+    
+    private void rotatePart(SnakeParts part, int xMove, int yMove)
+    {
+        if (xMove > 0)
+        {
+            part.setRotation(180);
+        }
+        else if (xMove < 0)
+        {
+            part.setRotation(0);
+        }
+        else if (yMove > 0)
+        {
+            part.setRotation(270);
+        }
+        else if (yMove < 0)
+        {
+            part.setRotation(90);
         }
     }
 }

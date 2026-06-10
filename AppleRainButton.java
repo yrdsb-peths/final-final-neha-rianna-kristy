@@ -1,10 +1,10 @@
 import greenfoot.*;
 
-public class MegaButton extends Button
+public class AppleRainButton extends Button
 {
-    private String text = "Mega";
+    private String text = "Apple Rain";
 
-    public MegaButton()
+    public AppleRainButton()
     {
         updateImage();
     }
@@ -13,7 +13,7 @@ public class MegaButton extends Button
     {
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new MegaGrid());
+            Greenfoot.setWorld(new AppleRainGrid());
         }
     }
 

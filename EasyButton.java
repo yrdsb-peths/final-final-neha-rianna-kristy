@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class EasyButton extends Actor
+public class EasyButton extends Button
 {
     private GreenfootImage clearImg;
     private GreenfootImage whiteImg;

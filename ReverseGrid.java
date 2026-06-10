@@ -1,12 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class ReverseGrid here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class ReverseGrid extends World
+public class ReverseGrid extends BaseGrid
 {
 
     /**
@@ -15,8 +9,8 @@ public class ReverseGrid extends World
      */
     public ReverseGrid()
     {    
-        super(436, 436, 1);
-        setBackground("easy_grid.png");
-        addObject(new Snake(), 90, 110); 
+        super(1000, 824);
+        addObject(new Snake(true), 90, 110);
+        mode = "reverse";
     }
 }

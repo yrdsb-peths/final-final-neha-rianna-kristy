@@ -1,23 +1,27 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class BombButton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class BombsButton extends Button
 {
-    /**
-     * Act - do whatever the BombButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
+    private String text = "Bombs";
+
+    public BombsButton()
+    {
+        updateImage();
+    }
+
     public void act()
     {
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new ClassicGrid());
+            Greenfoot.setWorld(new BombGrid());
         }
+    }
+
+    private void updateImage()
+    {
+        GreenfootImage textImg = new GreenfootImage(text, 60, Color.BLACK, new Color(0,0,0,0));
+        textImg.setFont(new Font("Monospaced", true, false, 30));
+
+        setImage(textImg);
     }
 }

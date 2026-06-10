@@ -14,14 +14,14 @@ public class MyWorld extends World
         super(600, 300, 1);
         setBackground("backgroundSnake.png");
         
-        // Draw the initial board right when the game loads
+        
         updateScoreboard();
     } 
     
     public void addScore()
     {
         score++;
-        updateScoreboard(); // Redraw the scoreboard with the new score
+        updateScoreboard();
     }
     
     public void stopBackgroundMusic()
@@ -30,21 +30,17 @@ public class MyWorld extends World
         musicStarted = true; 
     }
     
-    // A CUSTOM METHOD TO DRAW CLEAN TEXT ONTO THE BACKGROUND
+    
     private void updateScoreboard()
     {
-        // 1. Start with a fresh copy of your background image to clear old text
         GreenfootImage bg = new GreenfootImage("backgroundSnake.png");
         
-        // 2. Set the text color and font size (Color.WHITE, 20pt font)
         bg.setColor(Color.WHITE);
         bg.setFont(new Font("Arial", true, false, 20));
         
-        // 3. Draw the strings onto the image at specific (X, Y) coordinates
         bg.drawString("Time: " + seconds + "s", 30, 30);
         bg.drawString("Score: " + score, 480, 30);
         
-        // 4. Apply this freshly drawn image as the world's background
         setBackground(bg);
     }
     
@@ -61,7 +57,7 @@ public class MyWorld extends World
         if(time % 60 == 0)
         {
             seconds++;
-            updateScoreboard(); // Redraw the scoreboard every second to update the time
+            updateScoreboard(); 
         }
     }
 }
