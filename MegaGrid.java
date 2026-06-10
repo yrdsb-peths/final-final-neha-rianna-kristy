@@ -17,6 +17,6 @@ public class MegaGrid extends World
     {    
         super(654, 654, 1);
         setBackground("easy_grid.png");
-        addObject(new Snake(), 90, 110);
+        addObject(new Snake(false), 90, 110);
     }
 }

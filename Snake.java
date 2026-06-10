@@ -19,11 +19,13 @@ public class Snake extends Actor
     
     // Sound that plays when you hit a bomb
     private GreenfootSound bombExplodeSound = new GreenfootSound("bomb_explode.mp3");
+    
+    private boolean reverseControls;
 
-    public Snake()
+    public Snake(boolean reverseControls)
     {
         setImage(new GreenfootImage(1,1));
-
+        this.reverseControls = reverseControls;
     }
 
     public void addedToWorld(World world)
@@ -92,25 +94,53 @@ public class Snake extends Actor
     
     private void checkKeys()
     {
-        if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+        if (!reverseControls)
         {
-            xSpeed = 0;
-            ySpeed = -gridSize;
+            // Normal controls
+            if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = -gridSize;
+            }
+            else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = gridSize;
+            }
+            else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
+            {
+                xSpeed = -gridSize;
+                ySpeed = 0;
+            }
+            else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
+            {
+                xSpeed = gridSize;
+                ySpeed = 0;
+            }
         }
-        else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+        else
         {
-            xSpeed = 0;
-            ySpeed = gridSize;
-        }
-        else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
-        {
-            xSpeed = -gridSize;
-            ySpeed = 0;
-        }
-        else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
-        {
-            xSpeed = gridSize;
-            ySpeed = 0;
+            // Reversed controls
+            if (Greenfoot.isKeyDown("up") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = gridSize;
+            }
+            else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
+            {
+                xSpeed = 0;
+                ySpeed = -gridSize;
+            }
+            else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
+            {
+                xSpeed = gridSize;
+                ySpeed = 0;
+            }
+            else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
+            {
+                xSpeed = -gridSize;
+                ySpeed = 0;
+            }
         }
     }
     

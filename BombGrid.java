@@ -17,6 +17,6 @@ public class BombGrid extends World
     {    
         super(436, 436, 1);
         setBackground("easy_grid.png");
-        addObject(new Snake(), 90, 110);
+        addObject(new Snake(false), 90, 110);
     }
 }
