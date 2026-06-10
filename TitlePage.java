@@ -22,7 +22,7 @@ public class TitlePage extends World
     
     public void act()
     {
-   
+
     }
     
     /**
