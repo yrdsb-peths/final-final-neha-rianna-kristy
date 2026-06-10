@@ -10,11 +10,13 @@ public class AppleRainGrid extends BaseGrid
 {
     public AppleRainGrid()
     {
-        super(436, 436);
+        super(1000, 824);
 
         addObject(new Snake(false), 90, 110);
 
         int gridSize = BaseGrid.GRID_SIZE;
+        
+        mode = "appleRain";
 
         for (int x = gridSize / 2; x < getWidth(); x += gridSize)
         {

@@ -3,7 +3,7 @@ import java.util.List; // REQUIRED: Lets us find the Snake in the world to speed
 
 public class BaseGrid extends World
 {
-    public static final int GRID_SIZE = 20;
+    public static final int GRID_SIZE = 60;
 
     public int time = 0;
     public int seconds = 0;
@@ -15,12 +15,14 @@ public class BaseGrid extends World
     public Scoreboard scoreboard = new Scoreboard();
     public GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     public boolean musicStarted = false;
+    
+    public String mode = "classic";
 
     public BaseGrid(int width, int height)
     {    
         super(width, height, 1);
         
-        setBackground("easy_grid.png");
+        setBackground("mediumgrid.png");
         
         addObject(scoreboard, 109, 20); 
 
@@ -63,6 +65,11 @@ public class BaseGrid extends World
         }
     }
 
+    public void restart()
+    {
+        Greenfoot.setWorld(new BaseGrid(getWidth(), getHeight()));
+    }
+    
     public void spawnBomb()
     {
         
