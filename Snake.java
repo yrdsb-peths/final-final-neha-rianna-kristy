@@ -178,10 +178,6 @@ public class Snake extends Actor
             ((BaseGrid)getWorld()).addScore(); 
             getWorld().removeObject(apple);
             growSnake();
-            if (!(getWorld() instanceof AppleRainGrid))
-            {
-                spawnApple();
-            }
         }
     }
 
@@ -244,7 +240,11 @@ public class Snake extends Actor
     
         BaseGrid world = (BaseGrid)getWorld();
     
-        world.addObject(new EndPopup(message), world.getWidth()/2, world.getHeight()/2);
+        world.addObject(
+            new EndPopup(message, world),
+            world.getWidth()/2,
+            world.getHeight()/2
+        );
     }
     
     public void increaseSpeed()

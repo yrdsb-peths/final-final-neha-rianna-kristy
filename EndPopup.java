@@ -3,9 +3,11 @@ import greenfoot.*;
 public class EndPopup extends Actor
 {
     private String message;
+    private BaseGrid previousWorld;
 
-    public EndPopup(String message)
+    public EndPopup(String message, BaseGrid previousWorld)
     {
+        this.previousWorld = previousWorld;
         this.message = message;
 
         GreenfootImage img = new GreenfootImage(700, 500);
@@ -22,18 +24,40 @@ public class EndPopup extends Actor
 
     public void addedToWorld(World world)
     {
-        int cx = 350;
-        int cy = 306;
+        int cx = world.getWidth() / 2;
+        int cy = world.getHeight() / 2;
 
-        // RESTART BUTTON
         world.addObject(new PopupButton("RESTART", new Runnable() {
             public void run()
             {
-                Greenfoot.setWorld(new BaseGrid(1000, 824));
+                
+                if (previousWorld instanceof ClassicGrid)
+                {
+                    Greenfoot.setWorld(new ClassicGrid());
+                }
+                else if (previousWorld instanceof BombGrid)
+                {
+                    Greenfoot.setWorld(new BombGrid());
+                }
+                else if (previousWorld instanceof FastGrid)
+                {
+                    Greenfoot.setWorld(new FastGrid());
+                }
+                else if (previousWorld instanceof ReverseGrid)
+                {
+                    Greenfoot.setWorld(new ReverseGrid());
+                }
+                else if (previousWorld instanceof MegaGrid)
+                {
+                    Greenfoot.setWorld(new MegaGrid());
+                }
+                else if (previousWorld instanceof SmallGrid)
+                {
+                    Greenfoot.setWorld(new SmallGrid());
+                }
             }
         }), cx, cy + 60);
 
-        // MENU BUTTON
         world.addObject(new PopupButton("MENU", new Runnable() {
             public void run()
             {

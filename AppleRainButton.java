@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class AppleRainButton extends Button
 {
-    private String text = "Apple Rain";
+    private String text = "Small";
 
     public AppleRainButton()
     {
@@ -13,7 +13,7 @@ public class AppleRainButton extends Button
     {
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new AppleRainGrid());
+            Greenfoot.setWorld(new SmallGrid());
         }
     }
 
