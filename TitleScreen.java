@@ -10,18 +10,18 @@ public class TitleScreen extends World
 {
     public TitleScreen()
     {    
-        super(1000, 750, 1);
+        super(900, 700, 1);
 
         setBackground(new GreenfootImage("background.png"));
         
         HowToPlay instr = new HowToPlay();
-        addObject(instr, 500, 550);
+        addObject(instr, 450, 500);
         
         prepare();
         
         
         SelectButton select = new SelectButton();
-        addObject(select, 500, 650);
+        addObject(select, 450, 600);
 
     }
     
@@ -33,7 +33,7 @@ public class TitleScreen extends World
     
     private void prepare()
     {
-        addObject(new Logo(), 500, 275);
+        addObject(new Logo(), 450, 275);
 
     }
     
