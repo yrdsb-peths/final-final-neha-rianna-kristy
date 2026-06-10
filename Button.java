@@ -25,7 +25,7 @@ public class Button extends Actor
             return;
         }
         
-        GreenfootImage img = new GreenfootImage(text, 70, Color.WHITE, new Color(0, 0, 0, 0), Color.BLACK);
+        GreenfootImage img = new GreenfootImage(text, 50, Color.WHITE, new Color(0, 0, 0, 0), Color.BLACK);
         img.setFont(new Font("Monospaced", true, false, 30));
         setImage(img);
         
@@ -38,7 +38,7 @@ public class Button extends Actor
         {
             return;
         }
-        GreenfootImage img = new GreenfootImage(text, 70, Color.WHITE, Color.WHITE, Color.BLACK);
+        GreenfootImage img = new GreenfootImage(text, 50, Color.WHITE, Color.WHITE, Color.BLACK);
         img.setFont(new Font("Monospaced", true, false, 30));
         setImage(img);
         

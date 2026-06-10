@@ -1,22 +1,27 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class MegaButton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class MegaButton extends Button
 {
-    /**
-     * Act - do whatever the MegaButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private String text = "Mega";
+
+    public MegaButton()
+    {
+        updateImage();
+    }
+
     public void act()
     {
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new ClassicGrid());
+            Greenfoot.setWorld(new MegaGrid());
         }
+    }
+
+    private void updateImage()
+    {
+        GreenfootImage textImg = new GreenfootImage(text, 60, Color.BLACK, new Color(0,0,0,0));
+        textImg.setFont(new Font("Monospaced", true, false, 30));
+
+        setImage(textImg);
     }
 }

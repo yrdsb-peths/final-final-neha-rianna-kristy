@@ -1,22 +1,27 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class ReverseButton here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class ReverseButton extends Button
 {
-    /**
-     * Act - do whatever the ReverseButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private String text = "Reverse";
+
+    public ReverseButton()
+    {
+        updateImage();
+    }
+
     public void act()
     {
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new ClassicGrid());
+            Greenfoot.setWorld(new ReverseGrid());
         }
+    }
+
+    private void updateImage()
+    {
+        GreenfootImage textImg = new GreenfootImage(text, 60, Color.BLACK, new Color(0,0,0,0));
+        textImg.setFont(new Font("Monospaced", true, false, 30));
+
+        setImage(textImg);
     }
 }

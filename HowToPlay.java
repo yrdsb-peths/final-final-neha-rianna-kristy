@@ -4,7 +4,7 @@ public class HowToPlay extends Button
 {
     public HowToPlay()
     {
-        setText("How To Play");
+        setText("HOW TO PLAY");
     }
 
     public void act()
@@ -14,14 +14,12 @@ public class HowToPlay extends Button
         if (mouse != null && mouse.getActor() == this)
         {
             // hovered
-            setImage(new GreenfootImage("How To Play", 70, Color.BLACK,
-                                        new Color(0,0,0,0), Color.BLACK));
+            setImage(new GreenfootImage("HOW TO PLAY", 50, Color.BLACK, new Color(0,0,0,0), Color.BLACK));
         }
         else
         {
             // not hovered
-            setImage(new GreenfootImage("How To Play", 70, Color.WHITE,
-                                        new Color(0,0,0,0), Color.BLACK));
+            setImage(new GreenfootImage("HOW TO PLAY", 50, Color.WHITE, new Color(0,0,0,0), Color.BLACK));
         }
         
         if (Greenfoot.mouseClicked(this))
