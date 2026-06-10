@@ -15,7 +15,7 @@ public class MegaGrid extends BaseGrid
      */
     public MegaGrid()
     {    
-        super(2000, 1648);
+        super(1600, 1318);
         
         addObject(new Snake(false), 90, 110);
         mode = "mega";

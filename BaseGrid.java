@@ -3,7 +3,7 @@ import java.util.List; // REQUIRED: Lets us find the Snake in the world to speed
 
 public class BaseGrid extends World
 {
-    public static final int GRID_SIZE = 60;
+    public static final int GRID_SIZE = 46;
 
     public int time = 0;
     public int seconds = 0;

@@ -15,7 +15,7 @@ public class ClassicGrid extends BaseGrid
      */
     public ClassicGrid()
     {    
-        super(1000, 824);
+        super(800, 659);
         addObject(new Snake(false), 90, 110);
         mode = "classic";
     }

@@ -6,7 +6,7 @@ public class FastGrid extends BaseGrid
     private int oldSeconds = 0;
     public FastGrid()
     {    
-        super(1000, 824);
+        super(800, 659);
         addObject(new Snake(false), 90, 110);
         mode = "fast";
     }
