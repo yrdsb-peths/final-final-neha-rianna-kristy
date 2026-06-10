@@ -1,10 +1,10 @@
 import greenfoot.*;
 
-public class AppleRainButton extends Button
+public class SmallButton extends Button
 {
     private String text = "Small";
 
-    public AppleRainButton()
+    public SmallButton()
     {
         updateImage();
     }

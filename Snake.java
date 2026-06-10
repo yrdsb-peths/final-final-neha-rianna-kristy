@@ -134,21 +134,25 @@ public class Snake extends Actor
             {
                 xSpeed = 0;
                 ySpeed = gridSize;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
             {
                 xSpeed = 0;
                 ySpeed = -gridSize;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
             {
                 xSpeed = gridSize;
                 ySpeed = 0;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
             {
                 xSpeed = -gridSize;
                 ySpeed = 0;
+                isStarted = true;
             }
         }
     }

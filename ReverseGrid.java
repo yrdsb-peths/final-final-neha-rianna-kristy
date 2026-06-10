@@ -11,6 +11,5 @@ public class ReverseGrid extends BaseGrid
     {    
         super(700, 612);
         addObject(new Snake(true), 90, 110);
-        mode = "reverse";
     }
 }
