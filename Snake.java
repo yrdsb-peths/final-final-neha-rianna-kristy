@@ -208,7 +208,7 @@ public class Snake extends Actor
     {
         SnakeParts tail = parts.get(parts.size() - 1);
         SnakeParts newPart = new SnakeParts("middle.png");
-        parts.add(newPart);
+        parts.add(parts.size()-1, newPart);
         getWorld().addObject(newPart, tail.getX(), tail.getY());
     }
     
