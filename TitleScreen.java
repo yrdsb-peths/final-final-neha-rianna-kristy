@@ -11,9 +11,10 @@ public class TitleScreen extends World
     public TitleScreen()
     {    
         super(900, 700, 1);
-
-        setBackground(new GreenfootImage("background.png"));
         
+        GreenfootImage bg = new GreenfootImage("background.png");
+        bg.scale(getWidth(), getHeight());
+        setBackground(bg);
         HowToPlay instr = new HowToPlay();
         addObject(instr, 450, 500);
         
