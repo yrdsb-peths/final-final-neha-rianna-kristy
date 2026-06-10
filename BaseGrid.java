@@ -3,6 +3,7 @@ import java.util.List;
 
 public class BaseGrid extends World
 {
+    //800x700
     public static final int GRID_SIZE = 49;
 
     public int time = 0;
