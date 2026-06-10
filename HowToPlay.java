@@ -2,25 +2,31 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class HowToPlay extends Button
 {
-    public void act()
+    public HowToPlay()
     {
-        if (Greenfoot.mouseMoved(this))
-        {
-            setImage(new GreenfootImage("How to Play", 60, Color.BLACK, new Color(0,0,0,0)));
-        }
-        else if (Greenfoot.mouseMoved(null) && !isMouseOver())
-        {
-            setImage(new GreenfootImage("How to Play", 60, Color.WHITE, new Color(0,0,0,0)));
-        }
+        setText("How To Play");
     }
 
-    private boolean isMouseOver()
+    public void act()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
 
-        if (mouse == null)
-            return false;
-
-        return mouse.getActor() == this;
+        if (mouse != null && mouse.getActor() == this)
+        {
+            // hovered
+            setImage(new GreenfootImage("How To Play", 70, Color.BLACK,
+                                        new Color(0,0,0,0), Color.BLACK));
+        }
+        else
+        {
+            // not hovered
+            setImage(new GreenfootImage("How To Play", 70, Color.WHITE,
+                                        new Color(0,0,0,0), Color.BLACK));
+        }
+        
+        if (Greenfoot.mouseClicked(this))
+        {
+            getWorld().addObject(new TutorialPopup(), 500, 375);
+        }
     }
 }
