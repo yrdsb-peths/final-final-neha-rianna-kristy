@@ -70,7 +70,6 @@ public class Snake extends Actor
                 return;
             }
             
-            // CHECK FOR BOMBS HERE DIRECTLY
             checkBombCollision();
             if (isDead) return; 
             
@@ -96,7 +95,6 @@ public class Snake extends Actor
     {
         if (!reverseControls)
         {
-            // Normal controls
             if (Greenfoot.isKeyDown("up") && ySpeed == 0)
             {
                 xSpeed = 0;
@@ -176,7 +174,6 @@ public class Snake extends Actor
         }
     }
 
-    // SIMPLIFIED BOMB CHECKER: Checks if a bomb is sitting exactly where the head is
     private void checkBombCollision()
     {
         SnakeParts head = parts.get(0);
@@ -248,6 +245,26 @@ public class Snake extends Actor
         if (moveDelay > 2)
         {
             moveDelay--; 
+        }
+    }
+    
+    private void rotatePart(SnakeParts part, int xMove, int yMove)
+    {
+        if (xMove > 0)
+        {
+            part.setRotation(180);
+        }
+        else if (xMove < 0)
+        {
+            part.setRotation(0);
+        }
+        else if (yMove > 0)
+        {
+            part.setRotation(270);
+        }
+        else if (yMove < 0)
+        {
+            part.setRotation(90);
         }
     }
 }
