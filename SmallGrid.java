@@ -12,6 +12,6 @@ public class SmallGrid extends BaseGrid
     {
         super(350, 306);
 
-        addObject(new Snake(false), 90, 110);
+        addObject(new Snake(false), 330, 286);
     }
 }
