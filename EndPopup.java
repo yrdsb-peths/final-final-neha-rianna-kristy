@@ -63,6 +63,8 @@ public class EndPopup extends Actor
     {
         int cx = world.getWidth() / 2;
         int cy = world.getHeight() / 2;
+        
+        // Make restart and menu buttons smaller for small grid
         if (world instanceof SmallGrid)
         {
             world.addObject(new PopupButton("RESTART", new Runnable() {
@@ -108,7 +110,6 @@ public class EndPopup extends Actor
             world.addObject(new PopupButton("RESTART", new Runnable() {
                 public void run()
                 {
-                    
                     if (previousWorld instanceof ClassicGrid)
                     {
                         Greenfoot.setWorld(new ClassicGrid());

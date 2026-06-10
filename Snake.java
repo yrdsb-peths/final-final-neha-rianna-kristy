@@ -221,7 +221,8 @@ public class Snake extends Actor
             
             getWorld().removeObject(hitBomb);
             
-            executeGameOver("BOOM! GAME OVER");
+            // End the game
+            executeGameOver("GAME OVER");
         }
     }
 

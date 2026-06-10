@@ -13,8 +13,8 @@ public class Bomb extends Actor
         setImage("bomb.png"); 
         
         GreenfootImage img = getImage();
-        int randomSize = Greenfoot.getRandomNumber(16) + 10; 
-        img.scale(randomSize, randomSize);
+
+        img.scale(49, 49);
         setImage(img);
     }
     
