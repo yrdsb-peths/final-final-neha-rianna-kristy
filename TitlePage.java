@@ -19,7 +19,22 @@ public class TitlePage extends World
         
         prepare();
         
-        addObject(new SelectButton(), 500, 375);
+        
+        ClassicButton classic = new ClassicButton();
+        addObject(classic, 500, 250);
+        
+        BombsButton bombs = new BombsButton();
+        addObject(bombs, 500, 350);
+
+        FastButton fast = new FastButton();
+        addObject(fast, 500, 450);
+
+        ReverseButton reverse = new ReverseButton();
+        addObject(reverse, 500, 550);
+        
+        MegaButton mega = new MegaButton();
+        addObject(reverse, 500, 650);
+
     }
     
     public void act()

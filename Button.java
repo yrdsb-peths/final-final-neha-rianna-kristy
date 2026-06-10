@@ -1,36 +1,47 @@
-import greenfoot.*;
-import java.awt.Font;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Write a description of class Button here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Button extends Actor
 {
-    protected String text;
-    private GreenfootImage image;
-
+    private String text;
+    private boolean isWhite = false;
+    
     public void setText(String text)
     {
         this.text = text;
-        draw(Color.WHITE);
+        isWhite = true;
+        setClearBackground();
     }
-
-    public void setHover(boolean hover)
+    
+    public void setClearBackground()
     {
-        if (hover)
+        if (!isWhite)
         {
-            draw(Color.BLACK);
+            return;
         }
-        else
-        {
-            draw(Color.WHITE);
-        }
+        
+        GreenfootImage img = new GreenfootImage(text, 70, Color.WHITE, new Color(0, 0, 0, 0), Color.BLACK);
+        img.setFont(new Font("Monospaced", true, false, 30));
+        setImage(img);
+        
+        isWhite = false;
     }
-
-    private void draw(Color textColor)
+    
+    public void setWhiteBackground()
     {
-        if (text == null) return;
-
-        image = new GreenfootImage(text, 60, textColor, new Color(0,0,0,0));
-        image.setFont(new Font("Monospaced", true, false, 30));
-
-        setImage(image);
+        if (isWhite) 
+        {
+            return;
+        }
+        GreenfootImage img = new GreenfootImage(text, 70, Color.WHITE, Color.WHITE, Color.BLACK);
+        img.setFont(new Font("Monospaced", true, false, 30));
+        setImage(img);
+        
+        isWhite = true;
     }
 }
