@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List; // ADDED THIS LINE
 
 public class EasyGrid extends World
 {
@@ -8,6 +9,8 @@ public class EasyGrid extends World
     private int seconds = 0;
     private int score = 0;
     private boolean isGameOver = false; 
+    
+    private int level = 1; // ADDED THIS LINE
     
     private Scoreboard scoreboard = new Scoreboard();
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
@@ -23,6 +26,8 @@ public class EasyGrid extends World
         addObject(new Snake(), 90, 110);
         
         addObject(scoreboard, 109, 20); 
+        
+        showText("Level: " + level, 109, 5); // ADDED THIS LINE
         prepare();
     }
 
@@ -78,6 +83,19 @@ public class EasyGrid extends World
         {
             seconds++;
             scoreboard.updateValues(score, seconds);
+            
+            // --- ADDED THIS BLOCK BELOW ---
+            if (seconds % 5 == 0)
+            {
+                level++;
+                showText("Level: " + level, 109, 5);
+                
+                List<Snake> snakes = getObjects(Snake.class);
+                if (!snakes.isEmpty())
+                {
+                    snakes.get(0).increaseSpeed();
+                }
+            }
         }
     }
 
