@@ -13,9 +13,5 @@ public class SmallGrid extends BaseGrid
         super(350, 306);
 
         addObject(new Snake(false), 90, 110);
-
-        int gridSize = BaseGrid.GRID_SIZE;
-        
-        mode = "small";
     }
 }
