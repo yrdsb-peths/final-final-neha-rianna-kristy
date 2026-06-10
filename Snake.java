@@ -7,8 +7,9 @@ public class Snake extends Actor
     private int gridSize = BaseGrid.GRID_SIZE;
     private ArrayList<SnakeParts> parts = new ArrayList<SnakeParts>();
 
-    private int xSpeed = -gridSize;
+    private int xSpeed = 0;
     private int ySpeed = 0;
+    private boolean isStarted = false;
 
     private int counter = 0;
     private int moveDelay = 10;
@@ -54,7 +55,7 @@ public class Snake extends Actor
         checkKeys();
         counter++;
 
-        if (counter >= moveDelay)
+        if (counter >= moveDelay && isStarted)
         {
             moveSnake();
 
@@ -105,21 +106,25 @@ public class Snake extends Actor
             {
                 xSpeed = 0;
                 ySpeed = -gridSize;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("down") && ySpeed == 0)
             {
                 xSpeed = 0;
                 ySpeed = gridSize;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("left") && xSpeed == 0)
             {
                 xSpeed = -gridSize;
                 ySpeed = 0;
+                isStarted = true;
             }
             else if (Greenfoot.isKeyDown("right") && xSpeed == 0)
             {
                 xSpeed = gridSize;
                 ySpeed = 0;
+                isStarted = true;
             }
         }
         else
