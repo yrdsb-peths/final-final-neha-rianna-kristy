@@ -8,13 +8,13 @@ public class FastGrid extends BaseGrid
     {    
         super(436, 436);
         addObject(new Snake(false), 90, 110);
-        showText("Level: " + level, 100, 200);
     }
     
     public void act()
     {
         super.act();
-    
+        showText("Level: " + level, 259, 20);
+        
         if (seconds != oldSeconds)
         {
             oldSeconds = seconds;
@@ -23,7 +23,7 @@ public class FastGrid extends BaseGrid
             {
                 level++;
     
-                showText("Level: " + level, 100, 200);
+                showText("Level: " + level, 259, 20);
     
                 List<Snake> snakes = getObjects(Snake.class);
     

@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Rianna, Kristy, Neha
  * @version May 2026
  */
-public class TitlePage extends World
+public class TitleScreen extends World
 {
-    public TitlePage()
+    public TitleScreen()
     {    
         super(1000, 750, 1);
 
