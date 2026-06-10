@@ -10,7 +10,7 @@ public class AppleRainGrid extends BaseGrid
 {
     public AppleRainGrid()
     {
-        super(800, 700);
+        super(700, 612);
 
         addObject(new Snake(false), 90, 110);
 

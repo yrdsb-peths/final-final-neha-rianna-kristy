@@ -24,7 +24,7 @@ public class HowToPlay extends Button
         
         if (Greenfoot.mouseClicked(this))
         {
-            getWorld().addObject(new TutorialPopup(), 500, 375);
+            getWorld().addObject(new TutorialPopup(), 450, 375);
         }
     }
 }

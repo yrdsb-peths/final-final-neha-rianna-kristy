@@ -22,8 +22,8 @@ public class EndPopup extends Actor
 
     public void addedToWorld(World world)
     {
-        int cx = world.getWidth() / 2;
-        int cy = world.getHeight() / 2;
+        int cx = 350;
+        int cy = 306;
 
         // RESTART BUTTON
         world.addObject(new PopupButton("RESTART", new Runnable() {

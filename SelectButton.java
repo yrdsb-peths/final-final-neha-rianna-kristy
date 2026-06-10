@@ -19,7 +19,7 @@ public class SelectButton extends Button
 
         if (Greenfoot.mouseClicked(this))
         {
-            getWorld().addObject(new GamemodePopup(), 500, 375);
+            getWorld().addObject(new GamemodePopup(), 450, 375);
         }
     }
 

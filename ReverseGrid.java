@@ -9,7 +9,7 @@ public class ReverseGrid extends BaseGrid
      */
     public ReverseGrid()
     {    
-        super(1000, 824);
+        super(700, 612);
         addObject(new Snake(true), 90, 110);
         mode = "reverse";
     }
