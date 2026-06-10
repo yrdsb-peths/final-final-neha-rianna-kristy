@@ -169,7 +169,10 @@ public class Snake extends Actor
             ((BaseGrid)getWorld()).addScore(); 
             getWorld().removeObject(apple);
             growSnake();
-            spawnApple();
+            if (!(getWorld() instanceof AppleRainGrid))
+            {
+                spawnApple();
+            }
         }
     }
 

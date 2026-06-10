@@ -20,7 +20,8 @@ public class GamemodePopup extends Actor
         world.addObject(new ClassicButton(), 350, 225);
         world.addObject(new BombsButton(), 350, 375);
         world.addObject(new FastButton(), 350, 525);
-        world.addObject(new ReverseButton(), 650, 300);
-        world.addObject(new MegaButton(), 650, 450);
+        world.addObject(new ReverseButton(), 650, 225);
+        world.addObject(new MegaButton(), 650, 375);
+        world.addObject(new AppleRainButton(), 650, 525);
     }
 }

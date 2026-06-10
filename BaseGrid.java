@@ -5,17 +5,17 @@ public class BaseGrid extends World
 {
     public static final int GRID_SIZE = 20;
 
-    private int time = 0;
-    private int seconds = 0;
-    private int score = 0;
-    private boolean isGameOver = false; 
+    public int time = 0;
+    public int seconds = 0;
+    public int score = 0;
+    public boolean isGameOver = false; 
     
     // Tracks the current level
-    private int level = 1; 
+    public int level = 1; 
     
-    private Scoreboard scoreboard = new Scoreboard();
-    private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
-    private boolean musicStarted = false;
+    public Scoreboard scoreboard = new Scoreboard();
+    public GreenfootSound bgMusic = new GreenfootSound("background.mp3");
+    public boolean musicStarted = false;
 
     public BaseGrid(int width, int height)
     {    
@@ -24,8 +24,7 @@ public class BaseGrid extends World
         setBackground("easy_grid.png");
         
         addObject(scoreboard, 109, 20); 
-        
-        showText("Level: " + level, 100, 200);
+
         
         prepare();
     }
@@ -62,20 +61,6 @@ public class BaseGrid extends World
         {
             seconds++;
             scoreboard.updateValues(score, seconds);
-            
-            // Every 5 seconds, increase the difficulty level!
-            if (seconds % 5 == 0)
-            {
-                level++;
-                
-                showText("Level: " + level, 100, 200);
-                
-                List<Snake> snakes = getObjects(Snake.class);
-                if (!snakes.isEmpty())
-                {
-                    snakes.get(0).increaseSpeed();
-                }
-            }
         }
     }
 
