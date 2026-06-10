@@ -232,15 +232,11 @@ public class Snake extends Actor
     private void executeGameOver(String message)
     {
         ((BaseGrid)getWorld()).stopBackgroundMusic();
-        if (message.equals("GAME OVER")) {
-            gameOverSound.play();
-        }
-        
-        int centerX = getWorld().getWidth() / 2;
-        int centerY = getWorld().getHeight() / 2;
-        getWorld().showText(message, centerX, centerY);
         isDead = true;
-        
+    
+        BaseGrid world = (BaseGrid)getWorld();
+    
+        world.addObject(new EndPopup(message), world.getWidth()/2, world.getHeight()/2);
     }
     
     public void increaseSpeed()

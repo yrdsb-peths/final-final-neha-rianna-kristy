@@ -9,7 +9,7 @@ public class BombGrid extends BaseGrid
     
     public BombGrid()
     {    
-        super(436, 436);
+        super(1000, 824);
         addObject(new Snake(false), 90, 110);
         
         spawnBomb();

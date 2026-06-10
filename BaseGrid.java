@@ -16,6 +16,8 @@ public class BaseGrid extends World
     public Scoreboard scoreboard = new Scoreboard();
     public GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     public boolean musicStarted = false;
+    
+    public String mode = "classic";
 
     public BaseGrid(int width, int height)
     {    
@@ -64,6 +66,11 @@ public class BaseGrid extends World
         }
     }
 
+    public void restart()
+    {
+        Greenfoot.setWorld(new BaseGrid(getWidth(), getHeight()));
+    }
+    
     public void spawnBomb()
     {
         
