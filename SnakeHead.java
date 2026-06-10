@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class SnakeHead extends SnakeParts
 {
-    private GreenfootImage[] headFrames = new GreenfootImage[9];
+    private GreenfootImage[] headFrames = new GreenfootImage[10];
     private int currentFrame = 0;
     private int timer = 0;
 
@@ -10,9 +10,10 @@ public class SnakeHead extends SnakeParts
     {
         super("head0.png");
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 10; i++)
         {
             headFrames[i] = new GreenfootImage("head" + i + ".png");
+            headFrames[i].scale(EasyGrid.GRID_SIZE, EasyGrid.GRID_SIZE);
         }
 
         setImage(headFrames[0]);
@@ -22,9 +23,9 @@ public class SnakeHead extends SnakeParts
     {
         timer++;
 
-        if (timer >= 5)
+        if (timer >= 10)
         {
-            currentFrame = (currentFrame + 1) % 9;
+            currentFrame = (currentFrame + 1) % 10;
             setImage(headFrames[currentFrame]);
             timer = 0;
         }

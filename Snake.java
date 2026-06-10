@@ -28,7 +28,7 @@ public class Snake extends Actor
 
     public void addedToWorld(World world)
     {
-        SnakeParts head = new SnakeParts("head0.png");
+        SnakeHead head = new SnakeHead();
         SnakeParts body = new SnakeParts("middle.png");
         SnakeParts tail = new SnakeParts("tail.png");
 
