@@ -9,6 +9,7 @@ public class ReverseGrid extends BaseGrid
      */
     public ReverseGrid()
     {    
+        super(436, 436);
         addObject(new Snake(true), 90, 110);
     }
 }

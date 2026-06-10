@@ -15,6 +15,7 @@ public class FastGrid extends BaseGrid
      */
     public FastGrid()
     {    
+        super(436, 436);
         addObject(new Snake(false), 90, 110);
     }
 }

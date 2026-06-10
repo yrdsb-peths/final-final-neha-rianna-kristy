@@ -170,9 +170,6 @@ public class Snake extends Actor
             getWorld().removeObject(apple);
             growSnake();
             spawnApple();
-            
-            // Spawn a bomb every time an apple is eaten!
-            ((BaseGrid)getWorld()).spawnBomb();
         }
     }
 

@@ -15,6 +15,7 @@ public class ClassicGrid extends BaseGrid
      */
     public ClassicGrid()
     {    
+        super(436, 436);
         addObject(new Snake(false), 90, 110);
     }
 }

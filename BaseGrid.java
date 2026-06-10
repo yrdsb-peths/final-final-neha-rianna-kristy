@@ -17,9 +17,10 @@ public class BaseGrid extends World
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     private boolean musicStarted = false;
 
-    public BaseGrid()
+    public BaseGrid(int width, int height)
     {    
-        super(436, 436, 1);
+        super(width, height, 1);
+        
         setBackground("easy_grid.png");
         
         addObject(scoreboard, 109, 20); 
@@ -76,6 +77,11 @@ public class BaseGrid extends World
                 }
             }
         }
+    }
+
+    public void spawnBomb()
+    {
+        
     }
 
     private void prepare()
