@@ -9,7 +9,8 @@ public class BaseGrid extends World
     public int time = 0;
     public int seconds = 0;
     public int score = 0;
-    public boolean isGameOver = false; 
+    public boolean isGameOver = false;
+    public boolean isWin = false; 
     
     public int level = 1; 
     
@@ -35,6 +36,8 @@ public class BaseGrid extends World
     {
         score++;
         scoreboard.updateValues(score, seconds);
+        
+        checkWinCondition();
     }
     
     public void stopBackgroundMusic()
@@ -69,6 +72,43 @@ public class BaseGrid extends World
     public void restart()
     {
         Greenfoot.setWorld(new BaseGrid(getWidth(), getHeight()));
+    }
+    
+    public void checkWinCondition()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+    
+        int targetScore;
+    
+        if (this instanceof SmallGrid)
+        {
+            targetScore = 56;
+        }
+        else if (this instanceof MegaGrid)
+        {
+            targetScore = 323;
+        }
+        else
+        {
+            targetScore = 224;
+        }
+    
+        if (score == targetScore)
+        {
+            isGameOver = true;
+            isWin = true;
+    
+            stopBackgroundMusic();
+    
+            addObject(
+                new EndPopup("YOU WIN!", this),
+                getWidth() / 2,
+                getHeight() / 2
+            );
+        }
     }
     
     public void spawnBomb()
