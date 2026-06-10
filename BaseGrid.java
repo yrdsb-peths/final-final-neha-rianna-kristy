@@ -16,9 +16,6 @@ public class BaseGrid extends World
     private Scoreboard scoreboard = new Scoreboard();
     private GreenfootSound bgMusic = new GreenfootSound("background.mp3");
     private boolean musicStarted = false;
-    
-    // Sound that plays when a bomb appears
-    private GreenfootSound bombSpawnSound = new GreenfootSound("bomb_spawn.mp3");
 
     public BaseGrid()
     {    
@@ -30,25 +27,6 @@ public class BaseGrid extends World
         showText("Level: " + level, 100, 200);
         
         prepare();
-    }
-
-    public void spawnBomb()
-    {
-        int numCols = getWidth() / GRID_SIZE;
-        int numRows = getHeight() / GRID_SIZE;
-
-        int col = Greenfoot.getRandomNumber(numCols);
-        int row = Greenfoot.getRandomNumber(numRows);
-
-        int x = col * GRID_SIZE + GRID_SIZE / 2;
-        int y = row * GRID_SIZE + GRID_SIZE / 2;
-
-        
-        if (y > 40) 
-        {
-            addObject(new Bomb(), x, y);
-            bombSpawnSound.play(); 
-        }
     }
 
     public void addScore()
