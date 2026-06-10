@@ -209,5 +209,14 @@ public class Snake extends Actor
         int centerY = getWorld().getHeight() / 2;
         getWorld().showText(message, centerX, centerY);
         isDead = true;
+        
+    }
+    
+    public void increaseSpeed()
+    {
+        if (moveDelay > 2)
+        {
+            moveDelay--; 
+        }
     }
 }
