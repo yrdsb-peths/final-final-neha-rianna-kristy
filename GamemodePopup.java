@@ -2,6 +2,9 @@ import greenfoot.*;
 
 public class GamemodePopup extends Actor
 {
+    /**
+     * Creates the popup to select game mode
+     */
     public GamemodePopup()
     {
         GreenfootImage img = new GreenfootImage(700, 500);
@@ -15,6 +18,11 @@ public class GamemodePopup extends Actor
         setImage(img);
     }
 
+    /**
+     * Adds all the buttons to the popup 
+     * 
+     * @param world The world the buttons are added to
+     */
     public void addedToWorld(World world)
     {
         world.addObject(new ClassicButton(), 300, 225);

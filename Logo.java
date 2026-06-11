@@ -18,9 +18,4 @@ public class Logo extends Actor
         logo.scale(400, 400);
         setImage(logo);
     }
-    
-    public void act()
-    {
-        // Add your action code here.
-    }
 }

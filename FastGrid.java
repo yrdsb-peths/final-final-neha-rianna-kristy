@@ -4,12 +4,18 @@ import java.util.List;
 public class FastGrid extends BaseGrid
 {
     private int oldSeconds = 0;
+    /**
+     * Constructor for the fastgrid world, spawns snake
+     */
     public FastGrid()
     {    
         super(700, 612);
         addObject(new Snake(false), 330, 286);
     }
     
+    /**
+     * Every 5 seconds increase the level and speed
+     */
     public void act()
     {
         super.act();

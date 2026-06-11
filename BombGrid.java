@@ -7,6 +7,9 @@ public class BombGrid extends BaseGrid
     private int bombTimer = 0;
     private boolean bombVisible = false;
     
+    /**
+     * Bomb grif constructor, spawns the first bomb and creates the bomb world
+     */
     public BombGrid()
     {    
         super(700, 612);
@@ -17,6 +20,9 @@ public class BombGrid extends BaseGrid
         bombTimer = 0;
     }
     
+    /**
+     * Spawns a bomb randomly on the grid 
+     */
     public void spawnBomb()
     {
         int numCols = getWidth() / GRID_SIZE;
@@ -40,6 +46,9 @@ public class BombGrid extends BaseGrid
         bombSpawnSound.play(); 
     }
     
+    /**
+     * Controls bomb spawning 
+     */
     public void act()
     {
         super.act();

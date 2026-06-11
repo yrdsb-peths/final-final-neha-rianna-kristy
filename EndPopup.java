@@ -4,7 +4,13 @@ public class EndPopup extends Actor
 {
     private String message;
     private BaseGrid previousWorld;
-
+    
+    /**
+     * Creates end popup with a message 
+     * 
+     * @param message The message on the end popup
+     * @param previousWorld The game world that ended
+     */
     public EndPopup(String message, BaseGrid previousWorld)
     {
         this.previousWorld = previousWorld;
@@ -58,7 +64,12 @@ public class EndPopup extends Actor
 
         setImage(img);
     }
-
+    
+    /**
+     * Adds the restart and menu buttons
+     * 
+     * @param world The world the popup is added to 
+     */
     public void addedToWorld(World world)
     {
         int cx = world.getWidth() / 2;
