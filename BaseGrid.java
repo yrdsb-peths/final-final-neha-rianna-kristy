@@ -3,7 +3,6 @@ import java.util.List;
 
 public class BaseGrid extends World
 {
-    //800x700
     public static final int GRID_SIZE = 44;
 
     public int time = 0;
@@ -19,7 +18,14 @@ public class BaseGrid extends World
     public boolean musicStarted = false;
     
     public String mode = "classic";
-
+    
+    /**
+     * Constructor for the dimensions, background,
+     * and the scoreboard on the grid
+     * 
+     * @param width The width of the grid
+     * @param height The height of the grid
+     */
     public BaseGrid(int width, int height)
     {    
         super(width, height, 1);
@@ -28,10 +34,11 @@ public class BaseGrid extends World
         
         addObject(scoreboard, 109, 20); 
 
-        
-        prepare();
     }
-
+    
+    /**
+     * Updates the score and checks if player has won
+     */
     public void addScore()
     {
         score++;
@@ -40,13 +47,19 @@ public class BaseGrid extends World
         checkWinCondition();
     }
     
+    /**
+     * Stops the music
+     */
     public void stopBackgroundMusic()
     {
         bgMusic.stop();
         musicStarted = true; 
         isGameOver = true; 
     }
-
+    
+    /**
+     * Runs timer and background music
+     */
     public void act()
     {
         if (isGameOver)
@@ -68,12 +81,20 @@ public class BaseGrid extends World
             scoreboard.updateValues(score, seconds);
         }
     }
-
+    
+    /**
+     * Restarts the world with the same height and width
+     */
     public void restart()
     {
         Greenfoot.setWorld(new BaseGrid(getWidth(), getHeight()));
     }
     
+    /**
+     * Checks if the player has won based on what grid they are playing 
+     * in. Pops up you win if player has won. 
+     * 
+     */
     public void checkWinCondition()
     {
         if (isGameOver)
@@ -111,12 +132,4 @@ public class BaseGrid extends World
         }
     }
     
-    public void spawnBomb()
-    {
-        
-    }
-
-    private void prepare()
-    {
-    }
 }

@@ -6,8 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
+
+
 public class Apple extends Actor
 {
+    /**
+     * Constructor for apple, assigns image and scales it
+     */
     public Apple()
     {
         GreenfootImage img = new GreenfootImage("apple.png");

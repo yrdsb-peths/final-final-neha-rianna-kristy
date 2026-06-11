@@ -11,6 +11,11 @@ public class Button extends Actor
     private String text;
     private boolean isWhite = false;
     
+    /**
+     * Sets text on the button and makes the background clear
+     * 
+     * @param text The text for the button
+     */
     public void setText(String text)
     {
         this.text = text;
@@ -18,6 +23,9 @@ public class Button extends Actor
         setClearBackground();
     }
     
+    /**
+     * Makes the background of the button clear
+     */
     public void setClearBackground()
     {
         if (!isWhite)
@@ -32,6 +40,9 @@ public class Button extends Actor
         isWhite = false;
     }
     
+    /**
+     * Makes the background of the button white
+     */
     public void setWhiteBackground()
     {
         if (isWhite) 

@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bomb extends Actor
 {
+    /**
+     * Constructor for bomb, assigns image and scales it
+     */
     public Bomb()
     {
         setImage("bomb.png"); 
@@ -17,9 +20,5 @@ public class Bomb extends Actor
         img.scale(49, 49);
         setImage(img);
     }
-    
-    public void act()
-    {
-        // Add your action code here.
-    }
+
 }

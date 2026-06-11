@@ -22,15 +22,26 @@ public class Snake extends Actor
     private GreenfootSound bombExplodeSound = new GreenfootSound("bomb_explode.mp3");
     
     private boolean reverseControls;
-
+    
+    /**
+     * Sets if the controls should be reversed
+     * 
+     * @param reverseControls Boolean of if the controls are reversed or not
+     */
     public Snake(boolean reverseControls)
     {
         setImage(new GreenfootImage(1,1));
         this.reverseControls = reverseControls;
     }
 
+    /**
+     * Adds the inital body of the snake and the apple to the world
+     * 
+     * @param world The world the snake is added to
+     */
     public void addedToWorld(World world)
     {
+        
         SnakeHead head = new SnakeHead();
         SnakeParts body = new SnakeParts("middle.png");
         SnakeParts tail = new SnakeParts("tail.png");
@@ -45,6 +56,9 @@ public class Snake extends Actor
         spawnApple();
     }
 
+    /**
+     * Checks for collisions, runs apple checks and movement
+     */
     public void act()
     {
         if (isDead) 
@@ -268,6 +282,9 @@ public class Snake extends Actor
         );
     }
     
+    /**
+     * Increases snake speed
+     */
     public void increaseSpeed()
     {
         if (moveDelay > 2)
