@@ -61,13 +61,13 @@ public class Snake extends Actor
 
             if (checkWallCollision())
             {
-                executeGameOver("GAME OVER");
+                executeGameOver("GAME OVER\nScore: " + ((BaseGrid)getWorld()).score);
                 return;
             }
 
             if (checkSelfCollision())
             {
-                executeGameOver("GAME OVER");
+                executeGameOver("GAME OVER\nScore: " + ((BaseGrid)getWorld()).score);
                 return;
             }
             
